@@ -1,0 +1,3095 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ABSystem.CommService</name>
+    </assembly>
+    <members>
+        <member name="T:ABSystem.CommService.CommonServices.Base.APIResult">
+            <summary>
+            自定义API返回结果
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.CommonServices.Base.APIResult.Successed">
+            <summary>
+            API调用成功标志
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.CommonServices.Base.APIResult.CurrentExceptionMessage">
+            <summary>
+            API调用过程中发生的异常
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.CommonServices.Base.APIResult.#ctor(System.Boolean,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sucessed">成功标识</param>
+            <param name="message">错误消息</param>
+        </member>
+        <member name="M:ABSystem.CommService.CommonServices.Base.APIResult.#ctor">
+            <summary>
+            无参构造函数
+            </summary>
+        </member>
+        <member name="T:ABSystem.CommService.CommonServices.Base.APIResult`1">
+            <summary>
+            自定义API调用结果
+            </summary>
+            <typeparam name="T">返回数据类型</typeparam>
+        </member>
+        <member name="P:ABSystem.CommService.CommonServices.Base.APIResult`1.ResultSet">
+            <summary>
+            返回数据结果
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.CommonServices.Base.APIResult`1.#ctor">
+            <summary>
+            无参构造函数
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.CommonServices.Base.APIResult`1.#ctor(System.Boolean,`0,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sucessed">成功标识</param>
+            <param name="Entity">返回结果实体</param>
+            <param name="message">错误消息</param>
+        </member>
+        <member name="T:ABSystem.CommService.Base.ConvertUTC">
+            <summary>
+            UTC时间工具类
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.ConvertUTC.ConvertDateTimeInt(System.DateTime)">
+            <summary>
+            时间转换为与1970年1月1日的秒数差
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.ConvertUTC.ConvertIntDatetime(System.String)">
+            <summary>
+            字符串转换为北京时间
+            </summary>
+            <param name="strutc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.CommService.Base.Condition`1">
+            <summary>
+            查询条件类
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.Condition`1.PropertyName">
+            <summary>
+            属性名
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.Condition`1.Value">
+            <summary>
+            属性值
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.Condition`1.Operation">
+            <summary>
+            比较关系
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.Condition`1.#ctor(System.String,System.Object,ABSystem.CommService.Base.ConditionOperation)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="property">属性</param>
+            <param name="value">值</param>
+            <param name="operation">比较关系</param>
+        </member>
+        <member name="T:ABSystem.CommService.Base.EntityBusinessLogicService`2">
+            <summary>
+            简单业务逻辑处理类
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TUser">用户类型</typeparam>
+        </member>
+        <member name="F:ABSystem.CommService.Base.EntityBusinessLogicService`2._readContext">
+            <summary>
+            用于读的数据上下文
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.EntityBusinessLogicService`2._writeContext">
+            <summary>
+            用于写的数据上下文
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.EntityBusinessLogicService`2._computer">
+            <summary>
+            表达式分析器
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.EntityBusinessLogicService`2.#ctor(Microsoft.AspNet.Identity.EntityFramework.IdentityDbContext{`1},Microsoft.AspNet.Identity.EntityFramework.IdentityDbContext{`1},ABSystem.CommService.Base.IExpressionComputer)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="readContext">用于读的数据上下文</param>
+            <param name="writeContext">用于写的数据上下文</param>
+            <param name="computer">表达式解析器</param>
+        </member>
+        <member name="M:ABSystem.CommService.Base.EntityBusinessLogicService`2.DeleteEntity(`0)">
+            <summary>
+            持久化删除实体的方法
+            </summary>
+            <param name="entity">要删除的实体对象</param>
+            <returns>持久化结果对象</returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.EntityBusinessLogicService`2.DeleteEntityByCondition(ABSystem.CommService.Base.Condition{`0}[])">
+            <summary>
+            根据条件对象集合删除实体的方法
+            </summary>
+            <param name="conditions">条件对象集合</param>
+            <returns>持久化结果对象</returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.EntityBusinessLogicService`2.QueryEntitysByCondition(ABSystem.CommService.Base.Condition{`0}[])">
+            <summary>
+            根据查询条件查询对象集合的方法
+            </summary>
+            <param name="conditions">查询条件数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.EntityBusinessLogicService`2.QueryEntityByCondition(ABSystem.CommService.Base.Condition{`0}[])">
+            <summary>
+            根据查询条件查询一个对象的方法
+            </summary>
+            <param name="conditions">查询条件数组</param>
+            <returns>查询结果对象</returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.EntityBusinessLogicService`2.SaveModifiedEntity(`0)">
+            <summary>
+            保存实体的方法
+            </summary>
+            <param name="entity">要保存的实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.EntityBusinessLogicService`2.SaveNewEntity(`0)">
+            <summary>
+            新增实体的方法
+            </summary>
+            <param name="entity">新增的实体</param>
+            <returns>持久化结果对象</returns>
+        </member>
+        <member name="T:ABSystem.CommService.Base.CheckExistsMode">
+            <summary>
+            检测重复模式
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.CheckExistsMode.Insert">
+            <summary>
+            新增模式
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.CheckExistsMode.Edit">
+            <summary>
+            修改模式
+            </summary>
+        </member>
+        <member name="T:ABSystem.CommService.Base.ConditionOperation">
+            <summary>
+            查询条件逻辑运算符
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.ConditionOperation.GreaterThan">
+            <summary>
+            大于
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.ConditionOperation.GreaterThanOrEquals">
+            <summary>
+            大于等于
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.ConditionOperation.LessThan">
+            <summary>
+            小于
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.ConditionOperation.LessThanOrEquals">
+            <summary>
+            小于等于
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.ConditionOperation.Equals">
+            <summary>
+            等于
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.ConditionOperation.NotEquals">
+            <summary>
+            等于
+            </summary>
+        </member>
+        <member name="F:ABSystem.CommService.Base.ConditionOperation.like">
+            <summary>
+            包含字符
+            </summary>
+        </member>
+        <member name="T:ABSystem.CommService.Base.ExpressionComputer">
+            <summary>
+            表达式运算器
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.ExpressionComputer.ExpressionCompute(System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,ABSystem.CommService.Base.ConditionOperation)">
+            <summary>
+            表达式运算
+            </summary>
+            <param name="left">左边表达式</param>
+            <param name="right">右边表达式</param>
+            <param name="operation">运算符</param>
+            <returns>运算的到的新表达式</returns>
+        </member>
+        <member name="T:ABSystem.CommService.Base.IDbOperationResult">
+            <summary>
+            数据库操作结果类
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.IDbOperationResult.Successed">
+            <summary>
+            执行成功标志
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.IDbOperationResult.CurrentExceptionMessage">
+            <summary>
+            执行过程中发生的异常对象
+            </summary>
+        </member>
+        <member name="T:ABSystem.CommService.Base.IEntityPersistent`1">
+            <summary>
+            通用数据持久化接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IEntityPersistent`1.SaveNewEntity(`0)">
+            <summary>
+            保存新增实体的方法
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IEntityPersistent`1.SaveModifiedEntity(`0)">
+            <summary>
+            保存修改实体的方法
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IEntityPersistent`1.DeleteEntity(`0)">
+            <summary>
+            删除实体的方法
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IEntityPersistent`1.DeleteEntityByCondition(ABSystem.CommService.Base.Condition{`0}[])">
+            <summary>
+            根据查询条件集合删除实体的方法
+            </summary>
+            <param name="conditions">查询条件对象集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.CommService.Base.IEntityQuey`1">
+            <summary>
+            通用查询接口
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IEntityQuey`1.QueryEntitysByCondition(ABSystem.CommService.Base.Condition{`0}[])">
+            <summary>
+            根据查询条件查询对象集合的方法
+            </summary>
+            <param name="conditions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IEntityQuey`1.QueryEntityByCondition(ABSystem.CommService.Base.Condition{`0}[])">
+            <summary>
+            根据查询条件查询对象的方法
+            </summary>
+            <param name="conditions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.CommService.Base.IExpressionComputer">
+            <summary>
+            表达式运算接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IExpressionComputer.ExpressionCompute(System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,ABSystem.CommService.Base.ConditionOperation)">
+            <summary>
+            表达式运算
+            </summary>
+            <param name="left">左边表达式</param>
+            <param name="right">右边表达式</param>
+            <param name="operation">运算符</param>
+            <returns>运算后的表达式</returns>
+        </member>
+        <member name="T:ABSystem.CommService.Base.IRandomString">
+            <summary>
+            随机字符串服务接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IRandomString.GetRandomString(System.Int32)">
+            <summary>
+            获取要求长度的随机字符串
+            </summary>
+            <param name="length">长度</param>
+            <returns>随机字符串</returns>
+        </member>
+        <member name="T:ABSystem.CommService.Base.IValidateImageService">
+            <summary>
+            验证图片服务接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.IValidateImageService.CreateValidateGraphic(System.String@,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            生成随机码的验证图片
+            </summary>
+            <param name="Code">验证码</param>
+            <param name="CodeLength">验证码长度</param>
+            <param name="Width">图片宽度</param>
+            <param name="Height">图片高度</param>
+            <param name="FontSize">字体大小</param>
+            <returns>图片二进制流</returns>
+        </member>
+        <member name="T:ABSystem.CommService.Base.PersistentResult">
+            <summary>
+            执行持久化结果类
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.PersistentResult.Successed">
+            <summary>
+            执行成功标志
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.PersistentResult.CurrentExceptionMessage">
+            <summary>
+            异常对象
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.PersistentResult.#ctor(System.Boolean,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="success">成功标志</param>
+            <param name="error">异常对象</param>
+        </member>
+        <member name="T:ABSystem.CommService.Base.QueryResult`1">
+            <summary>
+            执行查询结果类
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.QueryResult`1.Successed">
+            <summary>
+            执行成功标志
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.QueryResult`1.ResultSet">
+            <summary>
+            执行查询返回的结果对象
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.QueryResult`1.CurrentExceptionMessage">
+            <summary>
+            执行查询中发生的异常
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.QueryResult`1.#ctor(System.Boolean,`0,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="success">成功标志</param>
+            <param name="entity">实体对象</param>
+            <param name="error">异常消息</param>
+        </member>
+        <member name="T:ABSystem.CommService.Base.SignInResult">
+            <summary>
+            登录结果对象
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.SignInResult.Errors">
+            <summary>
+            错误消息集合
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.SignInResult.Succeeded">
+            <summary>
+            成功标志
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.SignInResult.#ctor(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="errors"></param>
+            <param name="successed"></param>
+        </member>
+        <member name="T:ABSystem.CommService.Base.QueryResults`1">
+            <summary>
+            执行查询结果类
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.QueryResults`1.Successed">
+            <summary>
+            执行成功标志
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.QueryResults`1.ResultSet">
+            <summary>
+            执行查询返回的结果集
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.QueryResults`1.CurrentExceptionMessage">
+            <summary>
+            执行查询中发生的异常
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.QueryResults`1.#ctor(System.Boolean,System.Collections.Generic.IList{`0},System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="success">成功标志</param>
+            <param name="entitys">实体集合对象</param>
+            <param name="error">异常对象</param>
+        </member>
+        <member name="T:ABSystem.CommService.Base.CheckResult">
+            <summary>
+            检查结果对象
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.CheckResult.Successed">
+            <summary>
+            执行成功标志
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.CheckResult.ResultSet">
+            <summary>
+            执行检查返回的结果
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.CheckResult.CurrentExceptionMessage">
+            <summary>
+            执行查询中发生的异常
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.CheckResult.#ctor(System.Boolean,System.Boolean,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="success">成功标志</param>
+            <param name="checkResult">检查结果</param>
+            <param name="error">异常对象</param>
+        </member>
+        <member name="T:ABSystem.CommService.Base.PagingResult`1">
+            <summary>
+            分页查询结果
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.PagingResult`1.Successed">
+            <summary>
+            执行成功标志
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.PagingResult`1.ResultSet">
+            <summary>
+            执行查询返回的结果集
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.PagingResult`1.CurrentExceptionMessage">
+            <summary>
+            执行查询中发生的异常
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.PagingResult`1.Page">
+            <summary>
+            第几页
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.PagingResult`1.PerPage">
+            <summary>
+            每页行数
+            </summary>
+        </member>
+        <member name="P:ABSystem.CommService.Base.PagingResult`1.PageCount">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.Base.PagingResult`1.#ctor(System.Boolean,System.Collections.Generic.IList{`0},System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="success">成功标志</param>
+            <param name="entitys">对象集合</param>
+            <param name="error">异常对象</param>
+            <param name="page">当前页</param>
+            <param name="perpage">每页行数</param>
+            <param name="pagecount">总页数</param>
+        </member>
+        <member name="T:ABSystem.CommService.CustomAttributes.ChinessPhoneNumberAttribute">
+            <summary>
+            验证手机号码的自定义特性
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.CustomAttributes.ChinessPhoneNumberAttribute.#ctor(System.Func{System.String})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="errormessage"></param>
+        </member>
+        <member name="M:ABSystem.CommService.CustomAttributes.ChinessPhoneNumberAttribute.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="errormessage"></param>
+        </member>
+        <member name="M:ABSystem.CommService.CustomAttributes.ChinessPhoneNumberAttribute.GetClientValidationRules(System.Web.Mvc.ModelMetadata,System.Web.Mvc.ControllerContext)">
+            <summary>
+            客户端验证
+            </summary>
+            <param name="metadata"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.CustomAttributes.ChinessPhoneNumberAttribute.IsValid(System.Object)">
+            <summary>
+            验证方法
+            </summary>
+            <param name="value">需要验证的值</param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.CommService.CustomAttributes.NumberRangeInputAttribute">
+            <summary>
+            验证手机号码的自定义特性
+            </summary>
+        </member>
+        <member name="M:ABSystem.CommService.CustomAttributes.NumberRangeInputAttribute.#ctor(System.Func{System.String})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="errormessage"></param>
+        </member>
+        <member name="M:ABSystem.CommService.CustomAttributes.NumberRangeInputAttribute.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="errormessage"></param>
+        </member>
+        <member name="M:ABSystem.CommService.CustomAttributes.NumberRangeInputAttribute.GetClientValidationRules(System.Web.Mvc.ModelMetadata,System.Web.Mvc.ControllerContext)">
+            <summary>
+            客户端验证
+            </summary>
+            <param name="metadata"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CommService.CustomAttributes.NumberRangeInputAttribute.IsValid(System.Object)">
+            <summary>
+            验证方法
+            </summary>
+            <param name="value">需要验证的值</param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.CommService.LicenseControl.DongleLicenseControl">
+            <summary>
+            加密狗注册鉴权类
+            </summary>
+        </member>
+        <member name="T:ABSystem.LicenseControl.LicenseAbControl">
+            <summary>
+            授权信息文件操作类
+            </summary>
+        </member>
+        <member name="F:ABSystem.LicenseControl.LicenseAbControl.key">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="F:ABSystem.LicenseControl.LicenseAbControl.algorithmName">
+            <summary>
+            加密算法
+            </summary>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseAbControl.ReadLicense(System.String)">
+            <summary>
+            读取配置文件
+            </summary>
+            <param name="filepath">文件路径</param>
+            <returns>配置信息对象</returns>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseAbControl.WriteLicense(System.String,ABSystem.LicenseControl.LicenseInfo)">
+            <summary>
+            写配置文件
+            </summary>
+            <param name="filepath">文件路径</param>
+            <param name="info">配置信息对象</param>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseAbControl.InitLicense(System.String)">
+            <summary>
+            初始化文件的方法
+            </summary>
+            <param name="filepath"></param>
+        </member>
+        <member name="T:ABSystem.LicenseControl.LicenseInfo">
+            <summary>
+            授权配置信息
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfo.Mode">
+            <summary>
+            鉴权方式
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfo.Registed">
+            <summary>
+            已注册
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfo.LicenseTarget">
+            <summary>
+            授权对象
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfo.InterfaceRsaPublicKey">
+            <summary>
+            接口使用的Rsa公钥
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfo.OnlineAddress">
+            <summary>
+            在线鉴权的服务地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfo.NameSpace">
+            <summary>
+            命名空间
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfo.RegistMethodName">
+            <summary>
+            注册方法名
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfo.AuthorizationMethodName">
+            <summary>
+            鉴权方法名
+            </summary>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseInfo.#ctor">
+            <summary>
+            隐藏无参构造函数
+            </summary>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseInfo.#ctor(System.Boolean,ABSystem.LicenseControl.LicenseMode,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="registed">是否已注册</param>
+            <param name="licenseTarget">授权目标</param>
+            <param name="authorizationMethodName">鉴权方法名</param>
+            <param name="registMethodName">注册方法名</param>
+            <param name="mode">鉴权方式</param>
+            <param name="wnamespace">命名空间</param>
+            <param name="key">使用公钥</param>
+            <param name="address">在线鉴权服务地址</param>
+        </member>
+        <member name="T:ABSystem.LicenseControl.TempLicenseInfo">
+            <summary>
+            临时授权配置信息
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.TempLicenseInfo.Mode">
+            <summary>
+            鉴权方式
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.TempLicenseInfo.Registed">
+            <summary>
+            已注册
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.TempLicenseInfo.LicenseTarget">
+            <summary>
+            授权对象
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.TempLicenseInfo.InterfaceRsaPublicKey">
+            <summary>
+            接口使用的Rsa公钥
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.TempLicenseInfo.OnlineAddress">
+            <summary>
+            在线鉴权的服务地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.TempLicenseInfo.NameSpace">
+            <summary>
+            命名空间
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.TempLicenseInfo.RegistMethodName">
+            <summary>
+            注册方法名
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.TempLicenseInfo.AuthorizationMethodName">
+            <summary>
+            鉴权方法名
+            </summary>
+        </member>
+        <member name="T:ABSystem.LicenseControl.LicenseInfoViewModel">
+            <summary>
+            授权信息视图模型
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfoViewModel.Mode">
+            <summary>
+            鉴权方式
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfoViewModel.LicenseTarget">
+            <summary>
+            授权对象
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfoViewModel.OnlineAddress">
+            <summary>
+            在线鉴权的服务地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfoViewModel.NameSpace">
+            <summary>
+            命名空间
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfoViewModel.RegistMethodName">
+            <summary>
+            注册方法名
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseInfoViewModel.AuthorizationMethodName">
+            <summary>
+            鉴权方法名
+            </summary>
+        </member>
+        <member name="T:ABSystem.LicenseControl.LicenseViewModel">
+            <summary>
+            授权视图模型
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseViewModel.AbSystemCode">
+            <summary>
+            系统唯一编码
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseViewModel.SystemVersion">
+            <summary>
+            大版本号
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseViewModel.Version">
+            <summary>
+            系统版本号
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseViewModel.LicenseTarget">
+            <summary>
+            授权目标
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseViewModel.HardwareInfo">
+            <summary>
+            硬件信息
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseViewModel.Algorithm">
+            <summary>
+            加密算法名
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseViewModel.AlgorithmKey">
+            <summary>
+            加密算法密钥
+            </summary>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseViewModel.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="abSystemCode">系统唯一码</param>
+            <param name="bigversion">大版本号</param>
+            <param name="version">版本号</param>
+            <param name="target">授权目标</param>
+            <param name="hardware">硬件信息</param>
+            <param name="algorithm">加密算法名</param>
+            <param name="key">加密算法密钥</param>
+        </member>
+        <member name="M:ABSystem.LicenseControl.U_code.GetSn(System.UInt64[],System.UInt32@,System.Int32)">
+            C prototype:DWORD GetSn(unsigned long *sn,int *count,int maxIndex = MAXDEVICECOUNT);
+        </member>
+        <member name="M:ABSystem.LicenseControl.U_code.Init_cpudog(System.UInt32)">
+            C prototype:DWORD Init_cpudog(unsigned long sn);
+        </member>
+        <member name="M:ABSystem.LicenseControl.U_code.Write_EP_Data(System.Byte[],System.UInt32,System.UInt32@)">
+            C prototype:DWORD Write_EP_Data(BYTE* Self_Write_Buffer, UINT32 nDataLen, UINT32 nRetSize);
+        </member>
+        <member name="M:ABSystem.LicenseControl.U_code.Read_EP_Data(System.Byte[],System.UInt32,System.UInt32@)">
+            C prototype:DWORD Read_EP_Data(BYTE* Self_Define_Buffer, UINT32 nDataLen,UINT32 nRetSize);
+        </member>
+        <member name="T:ABSystem.LicenseControl.LicenseControlModel">
+            <summary>
+            授权文件使用的数据模型
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseControlModel.LicenseInfo">
+            <summary>
+            授权基本信息视图模型
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseControlModel.Mode">
+            <summary>
+            鉴权方式
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseControlModel.InterfaceRsaPublicKey">
+            <summary>
+            接口使用的Rsa公钥
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseControlModel.OnlineAddress">
+            <summary>
+            在线鉴权的服务地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseControlModel.NameSpace">
+            <summary>
+            命名空间
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseControlModel.RegistMethodName">
+            <summary>
+            注册方法名
+            </summary>
+        </member>
+        <member name="P:ABSystem.LicenseControl.LicenseControlModel.AuthorizationMethodName">
+            <summary>
+            鉴权方法名
+            </summary>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseControlModel.#ctor">
+            <summary>
+            隐藏无参构造函数
+            </summary>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseControlModel.#ctor(ABSystem.LicenseControl.LicenseViewModel,ABSystem.LicenseControl.LicenseMode,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="licenseinfo">授权基本信息</param>
+            <param name="authorizationMethodName">鉴权方法名</param>
+            <param name="registMethodName">注册方法名</param>
+            <param name="mode">鉴权方式</param>
+            <param name="wnamespace">命名空间</param>
+            <param name="key">使用公钥</param>
+            <param name="address">在线鉴权服务地址</param>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseControlModel.RegistLicenseOnline">
+            <summary>
+            授权注册的方法
+            </summary>
+            <returns>返回结果</returns>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseControlModel.AuthorizationLicenseOnline">
+            <summary>
+            鉴权的方法
+            </summary>
+            <returns>返回结果</returns>
+        </member>
+        <member name="M:ABSystem.LicenseControl.LicenseControlModel.AuthorizationLicenseOffline">
+            <summary>
+            加密狗鉴权的方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.LicenseControl.LicenseMode">
+            <summary>
+            鉴权方式枚举
+            </summary>
+        </member>
+        <member name="F:ABSystem.LicenseControl.LicenseMode.Online">
+            <summary>
+            在线鉴权
+            </summary>
+        </member>
+        <member name="F:ABSystem.LicenseControl.LicenseMode.Offline">
+            <summary>
+            离线鉴权
+            </summary>
+        </member>
+        <member name="T:ABSystem.Tools.ApplicationStateController">
+            <summary>
+            应用程序状态操作类
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.ApplicationStateController.GetParamFromAssembly``1(System.Reflection.Assembly)">
+            <summary>
+            反射获取特性对象的泛型方法
+            </summary>
+            <typeparam name="T">特性泛型</typeparam>
+            <param name="assembly">反射的程序集上下文</param>
+            <returns>特性对象</returns>
+        </member>
+        <member name="M:ABSystem.Tools.ApplicationStateController.GetParamFromApplicationState(System.Reflection.Assembly,System.String,System.Web.HttpApplicationStateBase)">
+            <summary>
+            从应用程序状态中获取自定义键值的方法
+            </summary>
+            <param name="assembly">反射的程序集上下文</param>
+            <param name="key">键名</param>
+            <param name="Application">应用程序状态集合</param>
+            <returns>键值</returns>
+        </member>
+        <member name="M:ABSystem.Tools.ApplicationStateController.GetParamFromApplicationState(System.Reflection.Assembly,System.String,System.Web.HttpApplicationState)">
+            <summary>
+            从应用程序状态中获取自定义键值的方法
+            </summary>
+            <param name="assembly">反射的程序集上下文</param>
+            <param name="key">键名</param>
+            <param name="Application">应用程序状态集合</param>
+            <returns>键值</returns>
+        </member>
+        <member name="M:ABSystem.Tools.ApplicationStateController.GetLicenseInfoFromApplication(System.Web.HttpApplicationStateBase)">
+            <summary>
+            从应用程序状态集合中获取授权信息的方法
+            </summary>
+            <param name="Application">应用程序状态集合</param>
+            <returns>授权信息对象</returns>
+        </member>
+        <member name="M:ABSystem.Tools.ApplicationStateController.GetLicenseInfoFromApplication(System.Web.HttpApplicationState)">
+            <summary>
+            从应用程序状态集合中获取授权信息的方法
+            </summary>
+            <param name="Application">应用程序状态集合</param>
+            <returns>授权信息对象</returns>
+        </member>
+        <member name="M:ABSystem.Tools.ApplicationStateController.GetLicenseInfoFromApplication(System.Web.HttpApplicationState,System.String)">
+            <summary>
+            从应用程序状态集合中获取授权信息的方法
+            </summary>
+            <param name="Application">应用程序状态集合</param>
+            <param name="filepath">文件的路径</param>
+            <returns>授权信息对象</returns>
+        </member>
+        <member name="M:ABSystem.Tools.ApplicationStateController.SetApplicationState(System.String,System.Object,System.Web.HttpApplicationStateBase)">
+            <summary>
+            设置应用程序状态集合的方法
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <param name="Application">应用程序状态集合</param>
+        </member>
+        <member name="M:ABSystem.Tools.ApplicationStateController.SetApplicationState(System.String,System.Object,System.Web.HttpApplicationState)">
+            <summary>
+            设置应用程序状态集合的方法
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <param name="Application">应用程序状态集合</param>
+        </member>
+        <member name="T:ABSystem.Tools.WebServiceLoader">
+            <summary>
+            动态调用web服务处理类
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceLoader.InvokeWebService(System.String,System.String,System.String,System.Object[])">
+            <summary>
+            实例化WebServices
+            </summary>
+            <param name="webservicenamespace">web服务命名空间</param>
+            <param name="url">WebServices地址</param>
+            <param name="methodname">调用的方法</param>
+            <param name="args">把webservices里需要的参数按顺序放到这个object[]里</param>
+        </member>
+        <member name="T:ABSystem.Tools.EnumExtnsions">
+            <summary>
+            Enum扩展方法，获取特性Display显示名
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.EnumExtnsions.GetDisplayName(System.Enum)">
+            <summary>
+            获取特性Display显示名的扩展方法,没有使用特性Display时返回枚举项的名称的字符串表示
+            </summary>
+            <param name="enumType">枚举的类型</param>
+            <returns>显示名</returns>
+        </member>
+        <member name="M:ABSystem.Tools.EnumExtnsions.GetDisplayName(System.Enum,System.String)">
+            <summary>
+            获取特性Display显示名的扩展方法,没有使用特性Display时返回枚举项的名称的字符串表示
+            </summary>
+            <param name="enumType">枚举的类型</param>
+            <param name="enumName">枚举定义名称的字符串表示</param>
+            <returns>显示名</returns>
+        </member>
+        <member name="T:ABSystem.Tools.ABXmlReader">
+            <summary>
+            xml读取类
+            </summary>
+        </member>
+        <member name="F:ABSystem.Tools.ABXmlReader.xml">
+            <summary>
+            节点集合对象
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.ABXmlReader.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xmlString"></param>
+        </member>
+        <member name="M:ABSystem.Tools.ABXmlReader.#ctor(System.String,System.Xml.Linq.LoadOptions)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="xmlString"></param>
+            <param name="option">加载选项</param>
+        </member>
+        <member name="M:ABSystem.Tools.ABXmlReader.TryGetValue(System.String,System.String@)">
+            <summary>
+            根据节点名获取节点值的方法
+            </summary>
+            <param name="nodename">节点名</param>
+            <param name="value">节点值，未获取到返回null</param>
+            <returns>获取是否成功</returns>
+        </member>
+        <member name="M:ABSystem.Tools.ABXmlReader.TryGetValue``1(System.String,``0@)">
+            <summary>
+            从节点中取得指定类型数据的方法
+            </summary>
+            <typeparam name="T">泛型参数</typeparam>
+            <param name="nodename">节点名称</param>
+            <param name="value">节点值</param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.Tools.HttpSimulate">
+            <summary>
+            模拟Http action
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.HttpSimulate.CheckValidationResult(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+            证书回调委托
+            </summary>
+            <param name="sender"></param>
+            <param name="certificate"></param>
+            <param name="chain"></param>
+            <param name="errors"></param>
+            <returns>返回结果</returns>
+        </member>
+        <member name="M:ABSystem.Tools.HttpSimulate.HttpPostSimulate(System.String,System.String,System.Int32)">
+            <summary>
+            模拟POST的方法
+            </summary>
+            <param name="targetUrl">目标地址</param>
+            <param name="dataXml">数据xml</param>
+            <param name="timeout">超时时间</param>
+            <returns>返回xml</returns>
+        </member>
+        <member name="M:ABSystem.Tools.HttpSimulate.HttpPostSimulate(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            模拟POST的方法，证书支持
+            </summary>
+            <param name="targetUrl">目标地址</param>
+            <param name="certPath">证书路径</param>
+            <param name="certPassword">证书密码</param>
+            <param name="dataXml">数据xml</param>
+            <param name="timeout">超时时间</param>
+            <returns>返回结果</returns>
+        </member>
+        <member name="T:ABSystem.Tools.WebServiceSoapClien">
+            <summary>
+            web服务soap调用类
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.SoapWebServiceString(System.String,System.String,System.String,System.Collections.Hashtable)">
+            <summary>
+            通过SOAP协议动态调用webservice 
+            </summary>
+            <param name="webServiceNamespace">Web服务的命名空间</param>
+            <param name="url"> webservice地址</param>
+            <param name="methodName"> 调用方法名</param>
+            <param name="pars"> 参数表</param>
+            <returns> 结果集xml的String格式</returns>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.SoapWebServiceDataSet(System.String,System.String,System.String,System.Collections.Hashtable)">
+            <summary>
+            通过SOAP协议动态调用webservice 
+            </summary>
+            <param name="webServiceNamespace">Web服务的命名空间</param>
+            <param name="url"> webservice地址</param>
+            <param name="methodName"> 调用方法名</param>
+            <param name="pars"> 参数表</param>
+            <returns> 结果集转换的DataSet</returns>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.SoapWebService(System.String,System.String,System.String,System.Collections.Hashtable)">
+            <summary>
+            通过SOAP协议动态调用webservice 
+            </summary>
+            <param name="webServiceNamespace">Web服务的命名空间</param>
+            <param name="url"> webservice地址</param>
+            <param name="methodName"> 调用方法名</param>
+            <param name="pars"> 参数表</param>
+            <returns> 结果集XmlDocument</returns>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.QuerySoapWebService(System.String,System.String,System.Collections.Hashtable,System.String)">
+            <summary>
+            通过SOAP协议动态调用webservice  
+            </summary>
+            <param name="url"> webservice地址</param>
+            <param name="methodName"> 调用方法名</param>
+            <param name="pars"> 参数表</param>
+            <param name="xmlNs"> 名字空间</param>
+            <returns> 结果集</returns>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.GetNamespace(System.String)">
+            <summary>
+            获取wsdl中的命名空间，传入命名空间则不调用此方法
+            </summary>
+            <param name="url"> wsdl地址</param>
+            <returns> 名字空间</returns>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.InitSoapHeader(System.Xml.XmlDocument)">
+            <summary>
+            加入soapheader节点
+            </summary>
+            <param name="doc"> soap文档</param>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.EncodeParsToSoap(System.Collections.Hashtable,System.String,System.String)">
+            <summary>
+            将以字节数组的形式返回soap协议
+            </summary>
+            <param name="pars"> 参数表</param>
+            <param name="xmlNs"> 名字空间</param>
+            <param name="methodName"> 方法名</param>
+            <returns> 字节数组</returns>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.ObjectToSoapXml(System.Object)">
+            <summary>
+            将参数对象中的内容取出
+            </summary>
+            <param name="o">参数值对象</param>
+            <returns>字符型值对象</returns>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.SetWebRequest(System.Net.HttpWebRequest)">
+            <summary>
+            设置请求身份
+            </summary>
+            <param name="request"> 请求</param>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.WriteRequestData(System.Net.HttpWebRequest,System.Byte[])">
+            <summary>
+            将soap协议写入请求
+            </summary>
+            <param name="request"> 请求</param>
+            <param name="data"> soap协议</param>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.ReadXmlResponse(System.Net.WebResponse)">
+            <summary>
+            将响应对象读取为xml对象
+            </summary>
+            <param name="response"> 响应对象</param>
+            <returns> xml对象</returns>
+        </member>
+        <member name="M:ABSystem.Tools.WebServiceSoapClien.AddDelaration(System.Xml.XmlDocument)">
+            <summary>
+            给xml文档添加声明
+            </summary>
+            <param name="doc"> xml文档</param>
+        </member>
+        <member name="T:ABSystem.Tools.RandomStringService">
+            <summary>
+            随机字符串服务
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.RandomStringService.GetRandomString(System.Int32)">
+            <summary> 
+            生成随机字母字符串(数字字母混和) 
+            </summary> 
+            <param name="length">待生成的位数</param> 
+            <returns>生成的字符串</returns>
+        </member>
+        <member name="T:ABSystem.Tools.ServerInfo">
+            <summary>
+            系统硬件信息类
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.ServerInfo.GetDiskVolumeSerialNumber">
+            <summary>
+            获取硬盘卷标号（所有，以逗号连接）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Tools.ServerInfo.GetCPUSequence">
+            <summary>
+            获取CPU序列号
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Tools.ServerInfo.GetMacAddress">
+            <summary>  
+            获取网卡硬件地址（所有，用逗号连接）  
+            </summary>  
+        </member>
+        <member name="P:ABSystem.Tools.ServerInfo.CPUSequence">
+            <summary>
+            CPU序列号
+            </summary>
+        </member>
+        <member name="P:ABSystem.Tools.ServerInfo.MacAddress">
+            <summary>
+            MAC地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.Tools.ServerInfo.DiskVolumeSerialNumber">
+            <summary>
+            硬盘卷标号
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.ServerInfo.ToString">
+            <summary>
+            转换成字符串的方法
+            </summary>
+            <returns>系统信息字符串</returns>
+        </member>
+        <member name="T:ABSystem.Tools.ValidateImageCreater">
+            <summary>
+            验证码接口实现
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.ValidateImageCreater.CreateValidateGraphic(System.String@,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            生成随机码的验证图片
+            </summary>
+            <param name="Code">验证码</param>
+            <param name="CodeLength">验证码长度</param>
+            <param name="Width">图片宽度</param>
+            <param name="Height">图片高度</param>
+            <param name="FontSize">字体大小</param>
+            <returns>图片二进制流</returns>
+        </member>
+        <member name="T:ABSystem.Tools.ValidateCodeCreater">
+            <summary>
+            随机字符串构造器
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.ValidateCodeCreater.GenerateRadomCode(System.Int32)">
+            <summary>
+            生成随机字符串的方法
+            </summary>
+            <param name="CodeLength">长度</param>
+            <returns>生成的字符串</returns>
+        </member>
+        <member name="T:ABSystem.Tools.NumberValidateCodeCreater">
+            <summary>
+            仅包含数字字符的随机字符串生成器
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.NumberValidateCodeCreater.GenerateRadomCode(System.Int32)">
+            <summary>
+            生成随机字符串的方法
+            </summary>
+            <param name="CodeLength">长度</param>
+            <returns>生成的字符串</returns>
+        </member>
+        <member name="T:ABSystem.Tools.IValidateCodeCreater">
+            <summary>
+            随机字符串生成器接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.IValidateCodeCreater.GenerateRadomCode(System.Int32)">
+            <summary>
+            生成随机字符串的方法
+            </summary>
+            <param name="CodeLength"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.Tools.AbValidateImageCreaterEX">
+            <summary>
+            验证码图片生成器
+            </summary>
+        </member>
+        <member name="M:ABSystem.Tools.AbValidateImageCreaterEX.CreateValidateGraphic(System.String@,ABSystem.Tools.IValidateCodeCreater,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            生成验证码图片的方法
+            </summary>
+            <param name="Code"></param>
+            <param name="codeCreater"></param>
+            <param name="CodeLength"></param>
+            <param name="Width"></param>
+            <param name="Height"></param>
+            <param name="FontSize"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.AES_Encrypt">
+            <summary>
+            AES加密算法
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.EncryptAsync(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.Encrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.EncryptAsync(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.Encrypt(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.EncryptAsync(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.Encrypt(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.DecryptAsync(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.Decrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.DecryptAsync(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.Decrypt(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.DecryptAsync(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_Encrypt.Decrypt(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.AES_ECB_PKCS7Padding_Encrypt">
+            <summary>
+            ABS加密实现类，采用ECB方式，PKCS7Padding
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_ECB_PKCS7Padding_Encrypt.EncryptAsync(System.String,System.String)">
+            <summary>
+            加密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_ECB_PKCS7Padding_Encrypt.Encrypt(System.String,System.String)">
+            <summary>
+            加密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_ECB_PKCS7Padding_Encrypt.DecryptAsync(System.String,System.String)">
+            <summary>
+            解密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AES_ECB_PKCS7Padding_Encrypt.Decrypt(System.String,System.String)">
+            <summary>
+            解密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.AlgorithmFactory">
+            <summary>
+            算法服务工厂
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AlgorithmFactory.GetAlgorithmInstance(System.String)">
+            <summary>
+            根据算法简写生成算法服务对象的方法
+            </summary>
+            <param name="description">算法简写</param>
+            <returns>算法服务对象</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.AlgorithmFactory.GetAlgorithmInstance(System.Int32)">
+            <summary>
+            根据算法索引生成算法服务对象的方法
+            </summary>
+            <param name="index">算法索引</param>
+            <returns>算法服务对象</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.CustomMd5Encrypt">
+            <summary>
+            加密服务实现
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.CustomMd5Encrypt.MD5(System.String)">
+            <summary>
+            MD5加密的方法
+            </summary>
+            <param name="source">目标字符串</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.CustomMd5Encrypt.MD5(System.String,System.Text.Encoding)">
+            <summary>
+            MD5加密的方法
+            </summary>
+            <param name="source">需要加密的数据</param>
+            <param name="coding">加密使用的编码</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.CustomMd5Encrypt.Compare(System.String,System.String)">
+            <summary>
+            比较加密结果的方法
+            </summary>
+            <param name="strsource">需要加密的字符串</param>
+            <param name="strtarget">结果字符串</param>
+            <returns>比较结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.CustomMd5Encrypt.CompareAsync(System.String,System.String)">
+            <summary>
+            比较加密结果的异步方法
+            </summary>
+            <param name="source">需要加密的字符串</param>
+            <param name="target">加密结果字符串</param>
+            <returns>比较结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.CustomMd5Encrypt.MD5Async(System.String)">
+            <summary>
+            MD5加密的异步方法
+            </summary>
+            <param name="source">目标字符串</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.CustomMd5Encrypt.MD5Async(System.String,System.Text.Encoding)">
+            <summary>
+            MD5加密的异步方法
+            </summary>
+            <param name="source">需要加密的数据</param>
+            <param name="coding">加密使用的编码</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.IEncryptService">
+            <summary>
+            加密服务接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IEncryptService.EncryptAsync(System.String,System.String)">
+            <summary>
+            加密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IEncryptService.Encrypt(System.String,System.String)">
+            <summary>
+            加密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IEncryptService.DecryptAsync(System.String,System.String)">
+            <summary>
+            解密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IEncryptService.Decrypt(System.String,System.String)">
+            <summary>
+            解密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.Des_EnCrypt">
+            <summary>
+            DES数据加密服务类
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.Encrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.EncryptAsync(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.Encrypt(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.EncryptAsync(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.Encrypt(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.EncryptAsync(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.Decrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64编码的加密串</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.DecryptAsync(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64编码的加密串</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.Decrypt(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64编码的加密串</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.DecryptAsync(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64编码的加密串</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.Decrypt(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64编码的加密串</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.Des_EnCrypt.DecryptAsync(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64编码的加密串</param>
+            <param name="sKey">密钥，且必须为8位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.IMD5EcryptCompare">
+            <summary>
+            MD5加密服务接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IMD5EcryptCompare.Compare(System.String,System.String)">
+            <summary>
+            指定算法比较加密字符串
+            </summary>
+            <param name="strsource">待比较的字符串</param>
+            <param name="strtarget">目标字符串</param>
+            <returns>是否相等</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IMD5EcryptCompare.CompareAsync(System.String,System.String)">
+            <summary>
+            指定算法比较加密字符串的异步方法
+            </summary>
+            <param name="source">待比较的字符串</param>
+            <param name="target">目标字符串</param>
+            <returns>是否相等</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IMD5EcryptCompare.MD5(System.String)">
+            <summary>
+            MD5加密的方法
+            </summary>
+            <param name="source">目标字符串</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IMD5EcryptCompare.MD5Async(System.String)">
+            <summary>
+            MD5加密的异步方法
+            </summary>
+            <param name="source">目标字符串</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IMD5EcryptCompare.MD5(System.String,System.Text.Encoding)">
+            <summary>
+            MD5加密的方法
+            </summary>
+            <param name="source">需要加密的数据</param>
+            <param name="coding">加密使用的编码</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.IMD5EcryptCompare.MD5Async(System.String,System.Text.Encoding)">
+            <summary>
+            MD5加密的异步方法
+            </summary>
+            <param name="source">需要加密的数据</param>
+            <param name="coding">加密使用的编码</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService">
+            <summary>
+            对称加密算法服务接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.EncryptAsync(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.EncryptAsync(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.EncryptAsync(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.Encrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.Encrypt(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.Encrypt(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            加密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>加密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.DecryptAsync(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.DecryptAsync(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.DecryptAsync(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的异步方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.Decrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.Decrypt(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.ISymmetricEncryptionAlgorithmService.Decrypt(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            解密的方法
+            </summary>
+            <param name="source">源字符串</param>
+            <param name="key">密钥</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>解密结果</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.RSACryption">
+            <summary>
+            RSA非对称加密算法服务类
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.RSAKey">
+            <summary>
+            RSA产生密钥
+            </summary>
+            <returns>包含私钥和公钥的元组的结果集</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.RSAEncrypt(System.String,System.String)">
+            <summary>
+            RSA的加密函数
+            </summary>
+            <param name="xmlPublicKey">公钥</param>
+            <param name="encryptString">待加密的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.RSAEncrypt(System.String,System.Byte[])">
+            <summary>
+            RSA的加密函数 
+            </summary>
+            <param name="xmlPublicKey">公钥</param>
+            <param name="EncryptString">待加密的字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.RSADecrypt(System.String,System.String)">
+            <summary>
+            RSA的解密函数
+            </summary>
+            <param name="xmlPrivateKey">私钥</param>
+            <param name="decryptString">待解密的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.RSADecrypt(System.String,System.Byte[])">
+            <summary>
+            RSA的解密函数 
+            </summary>
+            <param name="xmlPrivateKey">私钥</param>
+            <param name="DecryptString">待解密的字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.GetHash(System.String)">
+            <summary>
+            获取Hash描述表
+            </summary>
+            <param name="strSource">待签名的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.GetHashString(System.String)">
+            <summary>
+            获取Hash描述表
+            </summary>
+            <param name="strSource">待签名的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.GetHash(System.IO.FileStream)">
+            <summary>
+            获取Hash描述表
+            </summary>
+            <param name="objFile">待签名的文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.GetHashString(System.IO.FileStream)">
+            <summary>
+            获取Hash描述表
+            </summary>
+            <param name="objFile">待签名的文件</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.SignatureFormatter(System.String,System.String)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="strKeyPrivate">私钥</param>
+            <param name="strSource">待签名的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.SignatureFormatter2String(System.String,System.String)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="strKeyPrivate">私钥</param>
+            <param name="strSource">待签名的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.SignatureFormatter(System.String,System.IO.FileStream)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="strKeyPrivate">私钥</param>
+            <param name="objFile">待签名的文件流</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.SignatureFormatter2String(System.String,System.IO.FileStream)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="strKeyPrivate">私钥</param>
+            <param name="objFile">待签名文件流</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.SignatureDeformatter(System.String,System.String,System.Byte[])">
+            <summary>
+            RSA签名验证
+            </summary>
+            <param name="strKeyPublic">公钥</param>
+            <param name="strSource">验签主体</param>
+            <param name="DeformatterData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.SignatureDeformatter(System.String,System.IO.FileStream,System.Byte[])">
+            <summary>
+            RSA签名验证
+            </summary>
+            <param name="strKeyPublic">公钥</param>
+            <param name="objFile">验签主体</param>
+            <param name="DeformatterData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.SignatureDeformatter(System.String,System.String,System.String)">
+            <summary>
+            RSA签名验证
+            </summary>
+            <param name="strKeyPublic">公钥</param>
+            <param name="strSource">验签主体</param>
+            <param name="strDeformatterData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.SignatureDeformatter(System.String,System.IO.FileStream,System.String)">
+            <summary>
+            RSA签名验证
+            </summary>
+            <param name="strKeyPublic">公钥</param>
+            <param name="objFile">验签主体</param>
+            <param name="strDeformatterData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.RSAEncryptX(System.String,System.String)">
+            <summary>
+            RSA加密+base64
+            </summary>
+            <param name="publickey">公钥</param>
+            <param name="content">原文</param>
+            <returns>加密后的密文字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.RSACryption.RSADecryptX(System.String,System.String)">
+            <summary>
+            RSA解密
+            </summary>
+            <param name="privatekey">私钥</param>
+            <param name="content">密文（RSA+base64）</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="T:ABSystem.Security.Cryptography.TripleDESCryptography">
+            <summary>
+            3DES加密服务类
+            </summary>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.Encrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行3DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.EncryptAsync(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步3DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.Encrypt(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行3DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.EncryptAsync(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步3DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.Encrypt(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行3DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.EncryptAsync(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步3DES加密。
+            </summary>
+            <param name="pToEncrypt">要加密的字符串。</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>以Base64格式返回的加密字符串。</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.Decrypt(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.DecryptAsync(System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.Decrypt(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.DecryptAsync(System.String,System.String,System.String,System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.Decrypt(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            进行DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="M:ABSystem.Security.Cryptography.TripleDESCryptography.DecryptAsync(System.String,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            异步DES解密。
+            </summary>
+            <param name="pToDecrypt">要解密的以Base64</param>
+            <param name="sKey">密钥，且必须为24位。</param>
+            <param name="Iv">初始化向量</param>
+            <param name="cipherMode">指定用于加密的块密码模式</param>
+            <param name="padding">指定填充类型</param>
+            <returns>已解密的字符串</returns>
+        </member>
+        <member name="T:ABSystem.WxPay.MicroPayBillViewModel">
+            <summary>
+            对账单视图模型
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.TradeDate">
+            <summary>
+            交易时间
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.AppID">
+            <summary>
+            公众账号ID
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.MchID">
+            <summary>
+            商户号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.SubMchID">
+            <summary>
+            子商户号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.DeviceID">
+            <summary>
+            设备号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.TrasactionID">
+            <summary>
+            微信订单号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.TradeID">
+            <summary>
+            商户订单号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.UserSign">
+            <summary>
+            用户标识
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.TradeType">
+            <summary>
+            交易类型
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.TradeState">
+            <summary>
+            交易状态
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.FromBank">
+            <summary>
+            付款银行
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.CashType">
+            <summary>
+            货币种类
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.TotalFee">
+            <summary>
+            总金额
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.ReduceFee">
+            <summary>
+            代金券或立减优惠金额
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.GoodsName">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.PostData">
+            <summary>
+            商户数据包
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.FeeForPayService">
+            <summary>
+            手续费
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayBillViewModel.Rate">
+            <summary>
+            费率
+            </summary>
+        </member>
+        <member name="T:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel">
+            <summary>
+            微信支付退款对账单视图模型
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel.ReturnFeeApplyDate">
+            <summary>
+            退费申请时间
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel.ReturnFeeSuccessDate">
+            <summary>
+            退费成功时间
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel.ReturnFeeTransactionID">
+            <summary>
+            微信退款单号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel.ReturnFeeID">
+            <summary>
+            商户退款单号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel.ReturnAmount">
+            <summary>
+            退款金额
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel.RedueReturnAmount">
+            <summary>
+            代金券或立减优惠退款金额
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel.ReturnFeeType">
+            <summary>
+            退款类型
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayRetuenFeeBillViewModel.RetuenState">
+            <summary>
+            退款状态
+            </summary>
+        </member>
+        <member name="T:ABSystem.WxPay.MicroPayService">
+            <summary>
+            微信支付-刷卡支付服务类
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.cancelRetryCount">
+            <summary>
+            撤单重试次数
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.cancelRetryLimit">
+            <summary>
+            撤单重试次数上限
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.returnFeeRetryCount">
+            <summary>
+            退费重试次数
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.returnFeeRetryLimit">
+            <summary>
+            退费重试次数上限
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.waiteForQueryMilliseconds">
+            <summary>
+            支付后转到支付单查询等待时长
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.waiteForNextQueryMilliseconds">
+            <summary>
+            重复查单的时间间隔
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.orderQueryIntervalMilliseconds">
+            <summary>
+            退费查询接口重试等待时间间隔
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.payTimeOutSeconds">
+            <summary>
+            支付超时时长
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.orderQueryTimeOutSeconds">
+            <summary>
+            查单超时时长
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.orderReverseTimeOutSeconds">
+            <summary>
+            撤单超时时长
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.orderReturnTimeOutSeconds">
+            <summary>
+            退费超时时长
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.orderReturnQueryTimeOutSeconds">
+            <summary>
+            退费查询超时时长
+            </summary>
+        </member>
+        <member name="F:ABSystem.WxPay.MicroPayService.downloadBillTimeOutSeconds">
+            <summary>
+            下单对账单超时时长
+            </summary>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.#ctor">
+            <summary>
+            无参构造函数
+            </summary>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.#ctor(ABSystem.WxPay.WxPayConfigViewModel)">
+            <summary>
+            有参构造函数
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.MicroPayService.WxConfig">
+            <summary>
+            微信支付配置
+            </summary>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToMicroPayXml(System.String,System.Int32,System.String)">
+            <summary>
+            转换刷卡支付接口数据Xml的方法
+            </summary>
+            <param name="authcode"></param>
+            <param name="fee"></param>
+            <param name="tradeid">商户交易编号</param>
+            <returns>数据xml</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToMicroPayXml(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            转换刷卡支付接口数据Xml的方法
+            </summary>
+            <param name="authcode"></param>
+            <param name="fee"></param>
+            <param name="tradeid">商户交易编号</param>
+            <param name="sandboxkey">沙箱测试key</param>
+            <returns>数据xml</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToOrderQueryXml(System.String)">
+            <summary>
+            转换查单接口数据xml的方法
+            </summary>
+            <param name="tradeid">商户订单号</param>
+            <returns>数据xml</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToOrderCancelXml(System.String)">
+            <summary>
+            转换撤单接口数据Xml的方法
+            </summary>
+            <param name="tradeid">商户订单号</param>
+            <returns>数据xml</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToOrderReturnApplyXml(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            转换申请退款接口数据xml的方法
+            </summary>
+            <param name="tradeid">商户订单号</param>
+            <param name="refundid">退费申请单号</param>
+            <param name="OrderAmount">订单金额</param>
+            <param name="returnAmount">退费金额</param>
+            <returns>数据xml</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToOrderReturnQueryXml(System.String)">
+            <summary>
+            转换退费查询接口数据xml的方法
+            </summary>
+            <param name="refundid">退费申请单号</param>
+            <returns>数据xml</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToGetBillXml(System.DateTime,System.String)">
+            <summary>
+            转换对账单下载接口数据xml的方法
+            </summary>
+            <param name="billdate">对账单日期</param>
+            <param name="billtype">对账单类型（ALL，SUCCESS, REFUND，RECHARGE_REFUND）</param>
+            <returns>数据xml</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToReportXml(System.DateTime,System.DateTime,System.String,System.String,System.String)">
+            <summary>
+            构造效率上报的数据xml的方法
+            </summary>
+            <param name="begin">开始时间</param>
+            <param name="end">结束时间</param>
+            <param name="tradeid">商户订单号</param>
+            <param name="state">支付状态</param>
+            <param name="errormsg">错误消息</param>
+            <returns>数据xml</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToSandBoxXml">
+            <summary>
+            验收用例沙箱Key获取方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ToUrl(System.Collections.Generic.SortedDictionary{System.String,System.String})">
+            <summary>
+            生成url形式字符串的方法
+            </summary>
+            <param name="dic">字典</param>
+            <returns>结果字符串</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.CheckSign(System.String)">
+            <summary>
+            验证签名的方法
+            </summary>
+            <param name="xmlstr">xml格式字符串</param>
+            <returns>签名验证结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.GetAPIKey">
+            <summary>
+            获取沙箱测试KEY
+            </summary>
+            <returns>Key</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.CheckXmlNode(System.String,System.String,System.String)">
+            <summary>
+            验证xml节点值的方法
+            </summary>
+            <param name="xml">xml数据</param>
+            <param name="nodename">节点名称</param>
+            <param name="value">比较值</param>
+            <returns>比较结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.CheckXmlNode(System.String,System.String,System.Int32)">
+            <summary>
+            验证xml节点值的方法
+            </summary>
+            <param name="xml">xml数据</param>
+            <param name="nodename">节点名称</param>
+            <param name="value">比较值</param>
+            <returns>比较结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.MicroPay(System.String,System.String,System.Decimal)">
+            <summary>
+            执行微信支付的方法
+            </summary>
+            <param name="tradeid">商户订单号</param>
+            <param name="authcode">微信支付授权码</param>
+            <param name="payfee">支付金额</param>
+            <returns>支付结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.OrderQuery(System.String,System.Int32,System.Int32)">
+            <summary>
+            查单的方法
+            </summary>
+            <param name="tradeid">商户订单号</param>
+            <param name="maxturn">重试次数</param>
+            <param name="fee">支付金额</param>
+            <returns>查单结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.OrderReverse(System.String,System.Int32)">
+            <summary>
+            撤销支付单的方法
+            </summary>
+            <param name="tradeid">商户订单号</param>
+            <param name="fee">支付费用</param>
+            <returns>撤销结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.OrderReturnFee(System.String,System.String,System.Decimal,System.Decimal)">
+            <summary>
+            微信部分退回费用申请的方法
+            </summary>
+            <param name="trade_id">商户支付订单号</param>
+            <param name="refund_id">商户退费订单号</param>
+            <param name="dpayfee">支付金额</param>
+            <param name="dfee">退回费用金额</param>
+            <returns>退费申请结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.OrderReturnFeeQuery(System.String)">
+            <summary>
+            退回费用结果查询的方法
+            </summary>
+            <param name="refundid">退回费用的申请单号</param>
+            <returns>退费结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.DownLoadBill(System.DateTime,System.String)">
+            <summary>
+            下载对账单的方法
+            </summary>
+            <param name="billDate">账单日期</param>
+            <param name="billtype">账单类型</param>
+            <returns>对账单结果</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.Report(System.DateTime,System.DateTime,System.String,System.String,System.String)">
+            <summary>
+            效率上报的方法
+            </summary>
+            <param name="begin">开始时间</param>
+            <param name="end">结束时间</param>
+            <param name="tradeid">支付交易单号</param>
+            <param name="state">支付状态</param>
+            <param name="errormsg">错误消息</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.ReturnFeeNotify(System.String)">
+            <summary>
+            退费结果通知的方法
+            </summary>
+            <param name="responseXml">数据xml</param>
+            <returns>解析得到的包含通知结果对象和错误信息的查询结果对象</returns>
+        </member>
+        <member name="M:ABSystem.WxPay.MicroPayService.TryGetValue(System.String,System.String,System.String@)">
+            <summary>
+            从通知结果加密信息解开后结果中获取指定字段值的方法
+            </summary>
+            <param name="notifystr">xml</param>
+            <param name="nodename">字段名</param>
+            <param name="value">字段值</param>
+            <returns>解析字段是否成功</returns>
+        </member>
+        <member name="T:ABSystem.WxPay.TrainServiceReturnNotify">
+            <summary>
+            三方支付退费通知视图模型
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.ReturnFeeID">
+            <summary>
+            退费申请商户编号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.NotifyDateTime">
+            <summary>
+            退费返回时间
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.ReturnResult">
+            <summary>
+            返回信息
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.ReturnAmount">
+            <summary>
+            退费金额
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.Return_Status">
+            <summary>
+            退费状态
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.SuccessedDatetime">
+            <summary>
+            退费成功时间
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.FromAccount">
+            <summary>
+            退费资金来源
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.ToAccount">
+            <summary>
+            退费入账账户
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.TrainServiceReturnNotify.FromRequest">
+            <summary>
+            退费发起来源
+            </summary>
+        </member>
+        <member name="T:ABSystem.WxPay.WxPayConfigViewModel">
+            <summary>
+            微信支付配置视图模型
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.WxPayConfigID">
+            <summary>
+            编号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.AppID">
+            <summary>
+            微信授予的应用编号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.MchID">
+            <summary>
+            微信商户号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.Key">
+            <summary>
+            微信商户密钥
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.EncryptKey">
+            <summary>
+            系统使用的密钥
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.SSLCert_Path">
+            <summary>
+            证书路径
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.SSLCert_Password">
+            <summary>
+            证书密码
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.IPAddress">
+            <summary>
+            公网IP
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.WxPayUrlConfigID">
+            <summary>
+            编号
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.MicroPayUrl">
+            <summary>
+            刷卡支付提交地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.OrderQueryUrl">
+            <summary>
+            支付查询地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.OrderCancelUrl">
+            <summary>
+            撤销支付地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.OrderReturnFeeUrl">
+            <summary>
+            退费地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.OrderReturnFeeQueryUrl">
+            <summary>
+            退费查询地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.DownloadBillUrl">
+            <summary>
+            日交易明细下载地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.WxPay.WxPayConfigViewModel.ReportUrl">
+            <summary>
+            效率报告地址
+            </summary>
+        </member>
+        <member name="T:ABSystem.Message.IEmailSender">
+            <summary>
+            邮件发送接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.Message.IEmailSender.SendEmailAsync(System.String,System.String,System.String)">
+            <summary>
+            邮件发送方法
+            </summary>
+            <param name="email">目标地址</param>
+            <param name="subject">主题</param>
+            <param name="message">内容</param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.Message.ISmsSender">
+            <summary>
+            短信发送接口
+            </summary>
+        </member>
+        <member name="M:ABSystem.Message.ISmsSender.SendSmsAsync(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            发送短信的方法
+            </summary>
+            <param name="phonenumber">目标手机号</param>
+            <param name="signname">签名</param>
+            <param name="templatecode">模板编号</param>
+            <param name="templateparams">模板参数的json表示</param>
+            <param name="customvalue">自定义参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.Message.AuthMessageSender">
+            <summary>
+            实现信息交互的类，包括短信和电子邮件
+            </summary>
+        </member>
+        <member name="M:ABSystem.Message.AuthMessageSender.SendEmailAsync(System.String,System.String,System.String)">
+            <summary>
+            发送电子邮件的方法
+            </summary>
+            <param name="email">目标邮件地址</param>
+            <param name="subject">主题</param>
+            <param name="message">内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.Message.AuthMessageSender.SendSmsAsync(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            发送短信的方法
+            </summary>
+            <param name="phonenumber">目标手机号</param>
+            <param name="signname">签名</param>
+            <param name="templatecode">模板编号</param>
+            <param name="templateparams">模板参数的json表示</param>
+            <param name="customvalue">自定义参数</param>
+            <returns>无</returns>
+        </member>
+        <member name="T:ABSystem.Message.EmailService">
+            <summary>
+            邮件服务
+            </summary>
+        </member>
+        <member name="F:ABSystem.Message.EmailService.ConfigurationEmailIsBodyHtml">
+            <summary>
+            邮件体Html格式
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.From">
+            <summary>
+            发件人
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.Host">
+            <summary>
+            服务器地址
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.Port">
+            <summary>
+            端口
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.EnableSsl">
+            <summary>
+            ssl开关
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.IsBodyHtml">
+            <summary>
+            html格式开关
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.UseDefaultCredentials">
+            <summary>
+            默认用户设置开关
+            </summary>
+        </member>
+        <member name="P:ABSystem.Message.EmailService.DeliveryMethod">
+            <summary>
+            发送方式
+            </summary>
+        </member>
+        <member name="M:ABSystem.Message.EmailService.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:ABSystem.Message.EmailService.SendAsync(System.String,System.String,System.String)">
+            <summary>
+            发送邮件的方法
+            </summary>
+            <param name="emailAddress">地址</param>
+            <param name="sub">主题</param>
+            <param name="message">消息</param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.Message.AliDaYuSMS">
+            <summary>
+            阿里大鱼短信服务
+            </summary>
+        </member>
+        <member name="M:ABSystem.Message.AliDaYuSMS.SendSms(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            发送短信的方法
+            </summary>
+            <param name="phonenumber">目标手机号</param>
+            <param name="signname">签名</param>
+            <param name="templatecode">模板编号</param>
+            <param name="templateparams">模板参数的json表示</param>
+            <param name="customvalue">自定义参数</param>
+            <returns>响应对象</returns>
+        </member>
+        <member name="M:ABSystem.Message.AliDaYuSMS.SendBatchSms(System.String,System.String,System.String,System.String)">
+            <summary>
+            批量发送短信的方法
+            </summary>
+            <param name="phonenumbers">手机号数组的json形式表示</param>
+            <param name="signname">短信签名数组的json形式表示</param>
+            <param name="templatecode">模板号</param>
+            <param name="templateparams">模板参数数组的json形式表示</param>
+            <returns>响应对象</returns>
+        </member>
+        <member name="M:ABSystem.Message.AliDaYuSMS.QuerySendDetails(System.String,System.DateTime,System.Int32,System.Int32,System.String)">
+            <summary>
+            查询短信发送情况的方法
+            </summary>
+            <param name="phobenumber">目标手机号码</param>
+            <param name="queryDate">查询日期时间</param>
+            <param name="page">页码</param>
+            <param name="pagesize">分页大小</param>
+            <param name="bizId">业务号</param>
+            <returns>查询结果</returns>
+        </member>
+        <member name="T:ABSystem.CustomAttributes.ABRegularExpressionAttribute">
+            <summary>
+            正则表达式验证特性扩展，带客户端验证
+            </summary>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.ABRegularExpressionAttribute.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="pattern"></param>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.ABRegularExpressionAttribute.GetClientValidationRules(System.Web.Mvc.ModelMetadata,System.Web.Mvc.ControllerContext)">
+            <summary>
+            
+            </summary>
+            <param name="metadata"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.CustomAttributes.CitizenIDNumberValidationAttribute">
+            <summary>
+            验证身份证号的特性
+            </summary>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.CitizenIDNumberValidationAttribute.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.CitizenIDNumberValidationAttribute.#ctor(System.Func{System.String})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="errorMessageAccessor"></param>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.CitizenIDNumberValidationAttribute.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="errorMessage"></param>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.CitizenIDNumberValidationAttribute.IsValid(System.Object)">
+            <summary>
+            验证方法
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.CitizenIDNumberValidationAttribute.CheckIDCard18(System.String)">
+            <summary>
+            18位身份证验证方法
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.CitizenIDNumberValidationAttribute.CheckIDCard15(System.String)">
+            <summary>
+            15位身份证验证方法
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.CitizenIDNumberValidationAttribute.GetClientValidationRules(System.Web.Mvc.ModelMetadata,System.Web.Mvc.ControllerContext)">
+            <summary>
+            客户端验证
+            </summary>
+            <param name="metadata"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.CustomAttributes.LessThanOrEqualCompareAttribute">
+            <summary>
+            属性对比特性，小于等于
+            </summary>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.LessThanOrEqualCompareAttribute.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="otherProperty">需要比较的其他属性的名称</param>
+            <param name="otherPropertyDisplayName">需要比较的其他属性的显示名</param>
+        </member>
+        <member name="P:ABSystem.CustomAttributes.LessThanOrEqualCompareAttribute.OtherProperty">
+            <summary>
+            需要比较的属性
+            </summary>
+        </member>
+        <member name="P:ABSystem.CustomAttributes.LessThanOrEqualCompareAttribute.OtherPropertyDisplayName">
+            <summary>
+            需要比较属性的显示名
+            </summary>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.LessThanOrEqualCompareAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            比较方法
+            </summary>
+            <param name="value"></param>
+            <param name="validationContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.LessThanOrEqualCompareAttribute.GetClientValidationRules(System.Web.Mvc.ModelMetadata,System.Web.Mvc.ControllerContext)">
+            <summary>
+            客户端验证方法
+            </summary>
+            <param name="metadata"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ABSystem.CustomAttributes.ValideSubjectSetAttribute">
+            <summary>
+            科目设置验证特性
+            </summary>
+        </member>
+        <member name="P:ABSystem.CustomAttributes.ValideSubjectSetAttribute.RedirectUrl">
+            <summary>
+            返回地址
+            </summary>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.ValideSubjectSetAttribute.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:ABSystem.CustomAttributes.WriteLogAttribute">
+            <summary>
+            写日志特性
+            </summary>
+        </member>
+        <member name="P:ABSystem.CustomAttributes.WriteLogAttribute.ActionDescription">
+            <summary>
+            行为描述
+            </summary>
+        </member>
+        <member name="P:ABSystem.CustomAttributes.WriteLogAttribute.ControllerDescription">
+            <summary>
+            控制器描述
+            </summary>
+        </member>
+        <member name="M:ABSystem.CustomAttributes.WriteLogAttribute.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:ABSystem.HTMLHelperExtension.HtmlHelperDisplayExtensions">
+            <summary>
+            HTML显示辅助扩展
+            </summary>
+        </member>
+        <member name="M:ABSystem.HTMLHelperExtension.HtmlHelperDisplayExtensions.DisplayEnumFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            显示枚举类型的方法，用于显示枚举类型的Display特性标注的name
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="html"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ABSystem.HTMLHelperExtension.HtmlHelperDisplayExtensions.DisplayEnumFor``1(System.Web.Mvc.HtmlHelper,``0)">
+            <summary>
+            显示枚举类型的方法，用于显示枚举类型的Display特性标注的name
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="html"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

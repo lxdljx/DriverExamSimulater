@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RedisStudy.Core.CodeFirst\RedisStudy.Core.CodeFirst.csproj" />
+    <ProjectReference Include="..\RedisStudy.ViewModel\RedisStudy.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ABSystem.CommService">
+      <HintPath>..\..\..\..\CompanyWork\AbTrainingFeeManagementSystem\AbWeblicationSystemTemplet\SolutionDependency\ABSystem.CommService.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

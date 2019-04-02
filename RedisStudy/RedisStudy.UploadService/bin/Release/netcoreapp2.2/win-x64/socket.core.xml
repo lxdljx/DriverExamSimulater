@@ -1,0 +1,1408 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>socket.core</name>
+    </assembly>
+    <members>
+        <member name="T:socket.core.Client.TcpClients">
+            <summary>
+            客户端基础类
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpClients.socket">
+            <summary>
+            套接字
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpClients.m_sendPool">
+            <summary>
+            发送端SocketAsyncEventArgs对象重用池，发送套接字操作
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpClients.m_receiveBufferSize">
+            <summary>
+            用于每个套接字I/O操作的缓冲区大小
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpClients.buffer_receive">
+            <summary>
+            接受缓存
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpClients.receiveSocketAsyncEventArgs">
+            <summary>
+            接收对象
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpClients.m_minSendSocketAsyncEventArgs">
+            <summary>
+            发送对象默认数
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpClients.sendQueue">
+            <summary>
+            需要发送的数据
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpClients.OnConnect">
+            <summary>
+            连接成功事件
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpClients.OnReceive">
+            <summary>
+            接收通知事件
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpClients.OnSend">
+            <summary>
+            已送通知事件
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpClients.OnClose">
+            <summary>
+            断开连接通知事件
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpClients.mutex">
+            <summary>
+            锁
+            </summary>
+        </member>
+        <member name="P:socket.core.Client.TcpClients.Connected">
+            <summary>
+            是否连接服务器
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.#ctor(System.Int32)">
+            <summary>
+            设置基本配置
+            </summary>
+            <param name="receiveBufferSize">用于每个套接字I/O操作的缓冲区大小(接收端)</param>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.Init">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.Connect(System.String,System.Int32)">
+            <summary>
+            连接服务器
+            </summary>
+            <param name="ip">ip地址或域名</param>
+            <param name="port">连接端口</param>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.ProcessConnect(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            连接回调事件
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.IO_Completed(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            每当套接字上完成接收或发送操作时，都会调用此方法。
+            </summary>
+            <param name="sender"></param>
+            <param name="e">与完成的接收操作关联的SocketAsyncEventArg</param>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.ProcessReceive(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            接受回调
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.Send(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            异步发送消息 
+            </summary>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+            <returns>true:已连接到服务端,false:未连接到服务端</returns>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.StartSend">
+            <summary>
+            开始启用发送
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.Send(socket.core.Common.SendingQueue)">
+            <summary>
+            发送数据到服务端
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.ProcessSend(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            发送回调
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.Close">
+            <summary>
+            客户端主动关闭连接
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpClients.CloseClientSocket(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            客户端断开一个连接
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="T:socket.core.Client.TcpPackClient">
+            <summary>
+            推和拉组合体，自带分包处理机制
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpPackClient.tcpClients">
+            <summary>
+            基础类
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPackClient.OnConnect">
+            <summary>
+            连接成功事件 item1:是否连接成功
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPackClient.OnReceive">
+            <summary>
+            接收通知事件 item1:数据
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPackClient.OnSend">
+            <summary>
+            已发送通知事件 item1:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPackClient.OnClose">
+            <summary>
+            断开连接通知事件
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpPackClient.queue">
+            <summary>
+            接收到的数据缓存
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpPackClient.headerFlag">
+            <summary>
+            包头标记
+            </summary>
+        </member>
+        <member name="P:socket.core.Client.TcpPackClient.Connected">
+            <summary>
+            是否连接服务器
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.#ctor(System.Int32,System.UInt32)">
+            <summary>
+            设置基本配置
+            </summary>   
+            <param name="receiveBufferSize">用于每个套接字I/O操作的缓冲区大小(接收端)</param>
+            <param name="headerFlag">包头标记范围0~1023(0x3FF),当包头标识等于0时，不校验包头</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.Connect(System.String,System.Int32)">
+            <summary>
+            连接服务器
+            </summary>
+            <param name="ip">ip地址或域名</param>
+            <param name="port">端口</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.TcpServer_eventactionConnect(System.Boolean)">
+            <summary>
+            连接成功事件方法
+            </summary>
+            <param name="success">是否成功连接</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.Send(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.TcpClients_OnSend(System.Int32)">
+            <summary>
+            已发送长度
+            </summary>
+            <param name="length"></param>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.TcpServer_eventactionReceive(System.Byte[])">
+            <summary>
+            接收通知事件方法
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.Close">
+            <summary>
+            断开连接
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.TcpServer_eventClose">
+            <summary>
+            断开连接通知事件方法
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.AddHead(System.Byte[])">
+            <summary>
+            在数据起始位置增加4字节包头
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:socket.core.Client.TcpPackClient.Read">
+            <summary>
+            读取数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:socket.core.Client.TcpPullClient">
+            <summary>
+            Pull 拉出数据
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpPullClient.tcpClients">
+            <summary>
+            基础类
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPullClient.OnConnect">
+            <summary>
+            连接成功事件 item1:是否连接成功
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPullClient.OnReceive">
+            <summary>
+            接收通知事件 item1:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPullClient.OnSend">
+            <summary>
+            已发送通知事件 item1:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPullClient.OnClose">
+            <summary>
+            断开连接通知事件
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpPullClient.queue">
+            <summary>
+            接收到的数据缓存
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpPullClient.mutex">
+            <summary>
+            互斥锁
+            </summary>
+        </member>
+        <member name="P:socket.core.Client.TcpPullClient.Connected">
+            <summary>
+            是否连接服务器
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.#ctor(System.Int32)">
+            <summary>
+            设置基本配置
+            </summary>   
+            <param name="receiveBufferSize">用于每个套接字I/O操作的缓冲区大小(接收端)</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.Connect(System.String,System.Int32)">
+            <summary>
+            连接服务器
+            </summary>
+            <param name="ip">ip地址或域名</param>
+            <param name="port">端口</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.TcpServer_eventactionConnect(System.Boolean)">
+            <summary>
+            连接成功事件方法
+            </summary>
+            <param name="success">是否成功连接</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.Send(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.TcpClients_OnSend(System.Int32)">
+            <summary>
+            已发送长度
+            </summary>
+            <param name="length"></param>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.TcpServer_eventactionReceive(System.Byte[])">
+            <summary>
+            接收通知事件方法
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.GetLength">
+            <summary>
+            获取已经接收到的长度
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.Fetch(System.Int32)">
+            <summary>
+            取出指定长度数据
+            </summary>
+            <param name="length">获取长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.Close">
+            <summary>
+            断开连接
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpPullClient.TcpServer_eventClose">
+            <summary>
+            断开连接通知事件方法
+            </summary>
+        </member>
+        <member name="T:socket.core.Client.TcpPushClient">
+            <summary>
+            push 推出数据
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.TcpPushClient.tcpClients">
+            <summary>
+            基础类
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPushClient.OnConnect">
+            <summary>
+            连接成功事件 item1:是否连接成功
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPushClient.OnReceive">
+            <summary>
+            接收通知事件 item1:数据
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPushClient.OnSend">
+            <summary>
+            已发送通知事件 item1:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.TcpPushClient.OnClose">
+            <summary>
+            断开连接通知事件
+            </summary>
+        </member>
+        <member name="P:socket.core.Client.TcpPushClient.Connected">
+            <summary>
+            是否连接服务器
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpPushClient.#ctor(System.Int32)">
+            <summary>
+            设置基本配置
+            </summary>       
+            <param name="receiveBufferSize">用于每个套接字I/O操作的缓冲区大小(接收端)</param>     
+        </member>
+        <member name="M:socket.core.Client.TcpPushClient.Connect(System.String,System.Int32)">
+            <summary>
+            连接服务器
+            </summary>
+            <param name="ip">ip地址或域名</param>
+            <param name="port">端口</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPushClient.TcpServer_eventactionConnect(System.Boolean)">
+            <summary>
+            连接成功事件方法
+            </summary>
+            <param name="success">是否成功连接</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPushClient.Send(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPushClient.TcpClients_OnSend(System.Int32)">
+            <summary>
+            已发送长度
+            </summary>
+            <param name="length"></param>
+        </member>
+        <member name="M:socket.core.Client.TcpPushClient.TcpServer_eventactionReceive(System.Byte[])">
+            <summary>
+            接收通知事件方法
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:socket.core.Client.TcpPushClient.Close">
+            <summary>
+            断开连接
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.TcpPushClient.TcpServer_eventClose">
+            <summary>
+            断开连接通知事件方法
+            </summary>
+        </member>
+        <member name="T:socket.core.Client.UdpClients">
+            <summary>
+            udp客户端
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.UdpClients.listenSocket">
+            <summary>
+            用于监听传入连接请求的套接字
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.UdpClients.sendthread">
+            <summary>
+            发送线程数
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.UdpClients.mutex">
+            <summary>
+            锁
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.UdpClients.sendQueue">
+            <summary>
+            需要发送的数据
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.UdpClients.m_sendPool">
+            <summary>
+            发送端SocketAsyncEventArgs对象重用池，发送套接字操作
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.UdpClients.OnReceive">
+            <summary>
+            接收通知事件 item1:远程地址,item2:数据,item3:偏移位,item4:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Client.UdpClients.OnSend">
+            <summary>
+            发送通知事件 item1:远程地址,item2:已发送长度
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.UdpClients.m_receiveBufferSize">
+            <summary>
+            用于每个套接字I/O操作的缓冲区大小
+            </summary>
+        </member>
+        <member name="F:socket.core.Client.UdpClients.remoteEndPoint">
+            <summary>
+            远程地址
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.#ctor(System.Int32)">
+            <summary>
+            初始化
+            </summary>
+            <param name="receiveBufferSize">接收端缓存大小</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.Init">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.Start(System.String,System.Int32)">
+            <summary>
+            启动udp服务侦听
+            </summary>
+            <param name="ip">ip或者域名</param>
+            <param name="port">绑定端口</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.StartReceive(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            开始接收
+            </summary>
+            <param name="receiveSocketArgs">操作对象</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.ProcessReceive(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            接收回调
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.StartSend(System.Object)">
+            <summary>
+            开始启用发送
+            </summary>
+            <param name="thread">线程序号</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.Send(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.Send(System.Net.EndPoint,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据(因为UDP是无连接地址，所以直接可以指定任何发送地址)
+            </summary>
+            <param name="remoteEndPoint">发送地址和端口</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.Send(socket.core.Common.SendingQueue)">
+            <summary>
+            异步发送消息 
+            </summary>
+            <param name="sendQuere">发送消息体</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.ProcessSend(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            发送回调
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Client.UdpClients.IO_Completed(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            处理完成事件
+            </summary>
+            <param name="sender">socket对象</param>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="T:socket.core.Common.BufferManager">
+            <summary>
+            缓存管理类
+            </summary>
+        </member>
+        <member name="F:socket.core.Common.BufferManager.m_numBytes">
+            <summary>
+            缓冲池控制的总字节数
+            </summary>
+        </member>
+        <member name="F:socket.core.Common.BufferManager.m_buffer">
+            <summary>
+            缓冲区管理器维护的底层字节数组
+            </summary>
+        </member>
+        <member name="F:socket.core.Common.BufferManager.m_freeIndexPool">
+            <summary>
+            偏移位
+            </summary>
+        </member>
+        <member name="F:socket.core.Common.BufferManager.m_currentIndex">
+            <summary>
+            当前偏移位
+            </summary>
+        </member>
+        <member name="F:socket.core.Common.BufferManager.m_bufferSize">
+            <summary>
+            缓存大小
+            </summary>
+        </member>
+        <member name="M:socket.core.Common.BufferManager.#ctor(System.Int32,System.Int32)">
+            <summary>
+            初始化缓存
+            </summary>
+            <param name="totalBytes">缓存区总大小</param>
+            <param name="bufferSize">缓存大小</param>
+        </member>
+        <member name="M:socket.core.Common.BufferManager.InitBuffer">
+            <summary>
+            分配缓冲池使用的缓冲区空间
+            </summary>
+        </member>
+        <member name="M:socket.core.Common.BufferManager.SetBuffer(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            将缓冲池中的缓冲区分配给指定SocketAsyncEventArgs对象
+            </summary>
+            <param name="args">如果缓冲区成功设置，则为true，否则为false</param>
+            <returns></returns>
+        </member>
+        <member name="M:socket.core.Common.BufferManager.FreeBuffer(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            从SocketAsyncEventArg对象中删除缓冲区。这将缓冲区释放回缓冲池
+            </summary>
+            <param name="args">操作对象</param>
+        </member>
+        <member name="T:socket.core.Common.ConnectClient">
+            <summary>
+            已经连接的客户端
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.ConnectClient.socket">
+            <summary>
+            套接字
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.ConnectClient.saea_receive">
+            <summary>
+            接受端SocketAsyncEventArgs对象
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.ConnectClient.keep_alive">
+            <summary>
+            每隔10秒扫描次数,用于检查客户端是否存活
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.ConnectClient.attached">
+            <summary>
+            附加数据
+            </summary>
+        </member>
+        <member name="T:socket.core.Common.NetWork">
+            <summary>
+            获取网卡相关信息
+            </summary>
+        </member>
+        <member name="M:socket.core.Common.NetWork.GetNetwork">
+            <summary>
+            获取本地网络信息
+            </summary>
+            <returns>item1:ip地址,item2:子网掩码,item3:默认网关,item4:广播地址</returns>
+        </member>
+        <member name="T:socket.core.Common.SendingQueue">
+            <summary>
+            发送消息体
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.SendingQueue.connectId">
+            <summary>
+            连接标记
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.SendingQueue.remoteEndPoint">
+            <summary>
+            远程IP和端口
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.SendingQueue.data">
+            <summary>
+            发送的数据
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.SendingQueue.offset">
+            <summary>
+            偏移位
+            </summary>
+        </member>
+        <member name="P:socket.core.Common.SendingQueue.length">
+            <summary>
+            长度
+            </summary>
+        </member>
+        <member name="T:socket.core.Common.SocketAsyncEventArgsPool">
+            <summary>
+            表示可重用的SocketAsyncEventArgs对象的集合。
+            </summary>
+        </member>
+        <member name="F:socket.core.Common.SocketAsyncEventArgsPool.m_pool">
+            <summary>
+            重用池原数据
+            </summary>
+        </member>
+        <member name="M:socket.core.Common.SocketAsyncEventArgsPool.#ctor(System.Int32)">
+            <summary>
+            将对象池初始化为指定的大小
+            </summary>
+            <param name="capacity">最大数量该池可以容纳的SocketAsyncEventArgs对象</param>
+        </member>
+        <member name="M:socket.core.Common.SocketAsyncEventArgsPool.Push(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            将一个SocketAsyncEventArgs实例添加到池中
+            </summary>
+            <param name="item">SocketAsyncEventArgs实例添加到缓存池</param>
+        </member>
+        <member name="M:socket.core.Common.SocketAsyncEventArgsPool.Pop">
+            <summary>
+            从池中移除一个SocketAsyncEventArgs实例并返回从缓存池中移除的对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:socket.core.Common.SocketAsyncEventArgsPool.Count">
+            <summary>
+            池中的SocketAsyncEventArgs实例的数量
+            </summary>
+        </member>
+        <member name="T:socket.core.Server.TcpPackServer">
+            <summary>
+            推和拉组合体，自带分包处理机制
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpPackServer.tcpServer">
+            <summary>
+            基础类
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPackServer.OnAccept">
+            <summary>
+            连接成功事件  item1:connectId
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPackServer.OnReceive">
+            <summary>
+            接收通知事件  item1:connectId,item2:数据
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPackServer.OnSend">
+            <summary>
+            发送通知事件  item1:connectId,item2:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPackServer.OnClose">
+            <summary>
+            断开连接通知事件  item1:connectId,
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpPackServer.queue">
+            <summary>
+            接收到的数据缓存
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpPackServer.headerFlag">
+            <summary>
+            包头标记
+            </summary>
+        </member>
+        <member name="P:socket.core.Server.TcpPackServer.ClientList">
+            <summary>
+            客户端列表
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.#ctor(System.Int32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            设置基本配置
+            </summary>   
+            <param name="numConnections">同时处理的最大连接数</param>
+            <param name="receiveBufferSize">用于每个套接字I/O操作的缓冲区大小(接收端)</param>
+            <param name="overtime">超时时长,单位秒.(每10秒检查一次)，当值为0时，不设置超时</param>
+            <param name="headerFlag">包头标记范围0~1023(0x3FF),当包头标识等于0时，不校验包头</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.Start(System.Int32)">
+            <summary>
+            开启监听服务
+            </summary>        
+            <param name="port">监听端口</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.TcpServer_eventactionAccept(System.Int32)">
+            <summary>
+            连接成功事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.Send(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="connectId">连接ID</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.TcpServer_OnSend(System.Int32,System.Int32)">
+            <summary>
+            发送成功事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.TcpServer_eventactionReceive(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            接收通知事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.Close(System.Int32)">
+            <summary>
+            断开连接
+            </summary>
+            <param name="connectId">连接ID</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.TcpServer_eventClose(System.Int32)">
+            <summary>
+            断开连接通知事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.AddHead(System.Byte[])">
+            <summary>
+            在数据起始位置增加4字节包头
+            </summary>     
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.Read(System.Int32)">
+            <summary>
+            读取数据
+            </summary>
+            <param name="connectId">连接标记</param>
+            <returns></returns>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.SetAttached(System.Int32,System.Object)">
+            <summary>
+            给连接对象设置附加数据
+            </summary>
+            <param name="connectId">连接标识</param>
+            <param name="data">附加数据</param>
+            <returns>true:设置成功,false:设置失败</returns>
+        </member>
+        <member name="M:socket.core.Server.TcpPackServer.GetAttached``1(System.Int32)">
+            <summary>
+            获取连接对象的附加数据
+            </summary>
+            <param name="connectId">连接标识</param>
+            <returns>返回附加数据</returns>
+        </member>
+        <member name="T:socket.core.Server.TcpPullServer">
+            <summary>
+            Pull 拉出数据
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpPullServer.tcpServer">
+            <summary>
+            基础类
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPullServer.OnAccept">
+            <summary>
+            连接成功事件
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPullServer.OnReceive">
+            <summary>
+            接收通知事件  item1:connectId,item2:数据
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPullServer.OnSend">
+            <summary>
+            发送通知事件   item1:connectId,item2:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPullServer.OnClose">
+            <summary>
+            断开连接通知事件  item1:connectId,
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpPullServer.queue">
+            <summary>
+            接收到的数据缓存 
+            </summary>
+        </member>
+        <member name="P:socket.core.Server.TcpPullServer.ClientList">
+            <summary>
+            客户端列表
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            设置基本配置
+            </summary>   
+            <param name="numConnections">同时处理的最大连接数</param>
+            <param name="receiveBufferSize">用于每个套接字I/O操作的缓冲区大小(接收端)</param>
+            <param name="overtime">超时时长,单位秒.(每10秒检查一次)，当值为0时，不设置超时</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.Start(System.Int32)">
+            <summary>
+            开启监听服务
+            </summary>        
+            <param name="port">监听端口</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.TcpServer_eventactionAccept(System.Int32)">
+            <summary>
+            连接成功事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.Send(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="connectId">连接ID</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.TcpServer_OnSend(System.Int32,System.Int32)">
+            <summary>
+            发送成功事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.TcpServer_eventactionReceive(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            接收通知事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.GetLength(System.Int32)">
+            <summary>
+            获取已经接收到的长度
+            </summary>
+            <param name="connectId">连接标记</param>
+            <returns></returns>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.Fetch(System.Int32,System.Int32)">
+            <summary>
+            取出指定长度数据
+            </summary>
+            <param name="connectId">连接标记</param>
+            <param name="length">需要获取的长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.Close(System.Int32)">
+            <summary>
+            断开连接
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.TcpServer_eventClose(System.Int32)">
+            <summary>
+            断开连接通知事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.SetAttached(System.Int32,System.Object)">
+            <summary>
+            给连接对象设置附加数据
+            </summary>
+            <param name="connectId">连接标识</param>
+            <param name="data">附加数据</param>
+            <returns>true:设置成功,false:设置失败</returns>
+        </member>
+        <member name="M:socket.core.Server.TcpPullServer.GetAttached``1(System.Int32)">
+            <summary>
+            获取连接对象的附加数据
+            </summary>
+            <param name="connectId">连接标识</param>
+            <returns>返回附加数据</returns>
+        </member>
+        <member name="T:socket.core.Server.TcpPushServer">
+            <summary>
+            push 推出数据
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpPushServer.tcpServer">
+            <summary>
+            基础类
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPushServer.OnAccept">
+            <summary>
+            连接成功事件 item1:connectId
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPushServer.OnReceive">
+            <summary>
+            接收通知事件 item1:connectId,item2:数据
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPushServer.OnSend">
+            <summary>
+            已发送通知事件  item1:connectId,item2:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpPushServer.OnClose">
+            <summary>
+            断开连接通知事件 item1:connectId,
+            </summary>
+        </member>
+        <member name="P:socket.core.Server.TcpPushServer.ClientList">
+            <summary>
+            客户端列表
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            设置基本配置
+            </summary>   
+            <param name="numConnections">同时处理的最大连接数</param>
+            <param name="receiveBufferSize">用于每个套接字I/O操作的缓冲区大小(接收端)</param>
+            <param name="overtime">超时时长,单位秒.(每10秒检查一次)，当值为0时，不设置超时</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.Start(System.Int32)">
+            <summary>
+            开启监听服务
+            </summary>        
+            <param name="port">监听端口</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.TcpServer_eventactionAccept(System.Int32)">
+            <summary>
+            连接成功事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.Send(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="connectId">连接ID</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.TcpServer_OnSend(System.Int32,System.Int32)">
+            <summary>
+            发送通知事件
+            </summary>
+            <param name="connectId">连接标记</param>
+            <param name="length">已发送长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.TcpServer_eventactionReceive(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            接收通知事件方法
+            </summary>
+            <param name="connectId">连接ID</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.Close(System.Int32)">
+            <summary>
+            断开连接
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.TcpServer_eventClose(System.Int32)">
+            <summary>
+            断开连接通知事件方法
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.SetAttached(System.Int32,System.Object)">
+            <summary>
+            给连接对象设置附加数据
+            </summary>
+            <param name="connectId">连接标识</param>
+            <param name="data">附加数据</param>
+            <returns>true:设置成功,false:设置失败</returns>
+        </member>
+        <member name="M:socket.core.Server.TcpPushServer.GetAttached``1(System.Int32)">
+            <summary>
+            获取连接对象的附加数据
+            </summary>
+            <param name="connectId">连接标识</param>
+            <returns>返回附加数据</returns>
+        </member>
+        <member name="T:socket.core.Server.TcpServer">
+            <summary>
+            tcp Socket监听基库
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.connectId">
+            <summary>
+            连接标示 自增长
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.m_numConnections">
+            <summary>
+            同时处理的最大连接数
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.m_receiveBufferSize">
+            <summary>
+            用于每个套接字I/O操作的缓冲区大小
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.m_bufferManager">
+            <summary>
+            所有套接字接收操作的一个可重用的大型缓冲区集合。
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.listenSocket">
+            <summary>
+            用于监听传入连接请求的套接字
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.m_receivePool">
+            <summary>
+            接受端SocketAsyncEventArgs对象重用池，接受套接字操作
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.m_sendPool">
+            <summary>
+            发送端SocketAsyncEventArgs对象重用池，发送套接字操作
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.overtime">
+            <summary>
+            超时，如果超时，服务端断开连接，客户端需要重连操作
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.overtimecheck">
+            <summary>
+            超时检查间隔时间(秒)
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.m_maxNumberAcceptedClients">
+            <summary>
+            能接到最多客户端个数的原子操作
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.connectClient">
+            <summary>
+            已经连接的对象池
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.clientList">
+            <summary>
+            客户端列表
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.sendthread">
+            <summary>
+            发送线程数
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.sendQueues">
+            <summary>
+            需要发送的数据
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.TcpServer.mutex">
+            <summary>
+            锁
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpServer.OnAccept">
+            <summary>
+            连接成功事件 item1:connectId
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpServer.OnReceive">
+            <summary>
+            接收通知事件 item1:connectId,item2:数据,item3:偏移位,item4:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpServer.OnSend">
+            <summary>
+            已发送通知事件 item1:connectId,item2:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.TcpServer.OnClose">
+            <summary>
+            断开连接通知事件 item1:connectId,
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            设置基本配置
+            </summary>   
+            <param name="numConnections">同时处理的最大连接数</param>
+            <param name="receiveBufferSize">用于每个套接字I/O操作的缓冲区大小(接收端)</param>
+            <param name="overTime">超时时长,单位秒.(每10秒检查一次)，当值为0时，不设置超时</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.Init">
+            <summary>
+            初始化服务器通过预先分配的可重复使用的缓冲区和上下文对象。这些对象不需要预先分配或重用，但这样做是为了说明API如何可以易于用于创建可重用对象以提高服务器性能。
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.Start(System.Int32)">
+            <summary>
+            启动tcp服务侦听
+            </summary>       
+            <param name="port">监听端口</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.Heartbeat">
+            <summary>
+            超时机制
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.StartAccept(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            开始接受客户端的连接请求的操作。
+            </summary>
+            <param name="acceptEventArg">发布时要使用的上下文对象服务器侦听套接字上的接受操作</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.ProcessAccept(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            当异步连接完成时调用此方法
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.ProcessReceive(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            接受处理回调
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.StartSend(System.Object)">
+            <summary>
+            开始启用发送
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.Send(System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            异步发送消息 
+            </summary>
+            <param name="connectId">连接ID</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.Send(socket.core.Common.SendingQueue)">
+            <summary>
+            异步发送消息 
+            </summary>
+            <param name="sendQuere">发送消息体</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.ProcessSend(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            发送回调
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.IO_Completed(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            每当套接字上完成接收或发送操作时，都会调用此方法。
+            </summary>
+            <param name="sender"></param>
+            <param name="e">与完成的接收操作关联的SocketAsyncEventArg</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.Close(System.Int32)">
+            <summary>
+            客户端断开一个连接
+            </summary>
+            <param name="connectId">连接标记</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.CloseClientSocket(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            断开一个连接
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.SetAttached(System.Int32,System.Object)">
+            <summary>
+            给连接对象设置附加数据
+            </summary>
+            <param name="connectId">连接标识</param>
+            <param name="data">附加数据</param>
+            <returns>true:设置成功,false:设置失败</returns>
+        </member>
+        <member name="M:socket.core.Server.TcpServer.GetAttached``1(System.Int32)">
+            <summary>
+            获取连接对象的附加数据
+            </summary>
+            <param name="connectId">连接标识</param>
+            <returns>附加数据，如果没有找到则返回null</returns>
+        </member>
+        <member name="T:socket.core.Server.UdpServer">
+            <summary>
+            UPD 服务类
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.UdpServer.listenSocket">
+            <summary>
+            用于监听传入连接请求的套接字
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.UdpServer.m_receiveBufferSize">
+            <summary>
+            用于每个套接字I/O操作的缓冲区大小
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.UdpServer.mutex">
+            <summary>
+            锁
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.UdpServer.m_sendPool">
+            <summary>
+            发送端SocketAsyncEventArgs对象重用池，发送套接字操作
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.UdpServer.sendthread">
+            <summary>
+            发送线程数
+            </summary>
+        </member>
+        <member name="F:socket.core.Server.UdpServer.sendQueues">
+            <summary>
+            需要发送的数据,每一个线程一个队列
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.UdpServer.OnReceive">
+            <summary>
+            接收通知事件 item1:远程地址,item2:数据,item3:偏移位,item4:长度
+            </summary>
+        </member>
+        <member name="E:socket.core.Server.UdpServer.OnSend">
+            <summary>
+            发送通知事件 item1:远程地址,item2:已发送长度
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.#ctor(System.Int32)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="receiveBufferSize">接收缓存大小</param>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.Init">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.Start(System.Int32,System.Boolean)">
+            <summary>
+            启动udp服务侦听
+            </summary>       
+            <param name="port">绑定端口</param>
+            <param name="reuseAddress">重复地址</param>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.StartReceive(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            开始接收
+            </summary>
+            <param name="receiveSocketArgs">操作对象</param>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.ProcessReceive(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            接收回调
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.StartSend(System.Object)">
+            <summary>
+            开始启用发送
+            </summary>
+            <param name="thread">线程序号</param>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.Send(System.Net.EndPoint,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            发送数据
+            </summary>
+            <param name="remoteEndPoint">远程ip与端口</param>
+            <param name="data">数据</param>
+            <param name="offset">偏移位</param>
+            <param name="length">长度</param>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.Send(socket.core.Common.SendingQueue)">
+            <summary>
+            异步发送消息 
+            </summary>
+            <param name="sendQuere">发送消息体</param>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.ProcessSend(System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            发送回调
+            </summary>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="M:socket.core.Server.UdpServer.IO_Completed(System.Object,System.Net.Sockets.SocketAsyncEventArgs)">
+            <summary>
+            处理完成事件
+            </summary>
+            <param name="sender">socket对象</param>
+            <param name="e">操作对象</param>
+        </member>
+        <member name="T:socket.core.Server.WebSocketServer">
+            <summary>
+            WebSocket
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,12 @@
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\bin\Release\netcoreapp2.2\RedisStudy.ViewModel.deps.json
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\bin\Release\netcoreapp2.2\RedisStudy.ViewModel.dll
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\bin\Release\netcoreapp2.2\RedisStudy.ViewModel.pdb
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\bin\Release\netcoreapp2.2\CommondTools.dll
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\bin\Release\netcoreapp2.2\CommondTools.pdb
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\obj\Release\netcoreapp2.2\RedisStudy.ViewModel.csprojAssemblyReference.cache
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\obj\Release\netcoreapp2.2\RedisStudy.ViewModel.csproj.CoreCompileInputs.cache
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\obj\Release\netcoreapp2.2\RedisStudy.ViewModel.AssemblyInfoInputs.cache
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\obj\Release\netcoreapp2.2\RedisStudy.ViewModel.AssemblyInfo.cs
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\obj\Release\netcoreapp2.2\RedisStudy.ViewModel.csproj.CopyComplete
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\obj\Release\netcoreapp2.2\RedisStudy.ViewModel.dll
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.ViewModel\obj\Release\netcoreapp2.2\RedisStudy.ViewModel.pdb

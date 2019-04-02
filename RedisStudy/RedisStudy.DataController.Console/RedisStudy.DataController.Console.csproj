@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <StartupObject>RedisStudy.DataController.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.519" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommondTools\CommondTools.csproj" />
+    <ProjectReference Include="..\RedisStudy.BusinessLogic\RedisStudy.BusinessLogic.csproj" />
+    <ProjectReference Include="..\RedisStudy.Core.CodeFirst\RedisStudy.Core.CodeFirst.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ABSystem.CommService">
+      <HintPath>..\..\..\..\CompanyWork\AbTrainingFeeManagementSystem\AbWeblicationSystemTemplet\SolutionDependency\ABSystem.CommService.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>System</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <StartupObject>RedisStudy.UploadService.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommondTools\CommondTools.csproj" />
+    <ProjectReference Include="..\RedisStudy.BusinessLogic\RedisStudy.BusinessLogic.csproj" />
+    <ProjectReference Include="..\RedisStudy.ViewModel\RedisStudy.ViewModel.csproj" />
+    <ProjectReference Include="..\socket.core\socket.core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="lostpoint.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="projects.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

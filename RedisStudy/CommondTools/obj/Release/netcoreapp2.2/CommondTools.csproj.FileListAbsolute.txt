@@ -1,0 +1,9 @@
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\bin\Release\netcoreapp2.2\CommondTools.deps.json
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\bin\Release\netcoreapp2.2\CommondTools.dll
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\bin\Release\netcoreapp2.2\CommondTools.pdb
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\obj\Release\netcoreapp2.2\CommondTools.csprojAssemblyReference.cache
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\obj\Release\netcoreapp2.2\CommondTools.csproj.CoreCompileInputs.cache
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\obj\Release\netcoreapp2.2\CommondTools.AssemblyInfoInputs.cache
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\obj\Release\netcoreapp2.2\CommondTools.AssemblyInfo.cs
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\obj\Release\netcoreapp2.2\CommondTools.dll
+F:\PersonalWork\RedisStudy\RedisStudy\CommondTools\obj\Release\netcoreapp2.2\CommondTools.pdb

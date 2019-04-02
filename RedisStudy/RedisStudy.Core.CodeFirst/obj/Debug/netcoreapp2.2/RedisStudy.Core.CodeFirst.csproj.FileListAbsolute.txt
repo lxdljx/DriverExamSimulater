@@ -1,0 +1,15 @@
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\obj\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.csproj.CoreCompileInputs.cache
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\obj\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.AssemblyInfoInputs.cache
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\obj\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.AssemblyInfo.cs
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\bin\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.deps.json
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\bin\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.dll
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\obj\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.csproj.CopyComplete
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\bin\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.pdb
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\obj\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.dll
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\obj\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.pdb
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\bin\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.runtimeconfig.json
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\bin\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.runtimeconfig.dev.json
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\bin\Debug\netcoreapp2.2\appsettings.json
+F:\PersonalWork\RedisStudy\RedisStudy\RedisStudy.Core.CodeFirst\obj\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.csprojAssemblyReference.cache
