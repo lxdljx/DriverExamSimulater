@@ -19,6 +19,8 @@ namespace RedisStudy.UploadService
 
         public int CarID { get; set; }
 
+        private const string Channel = "SSS";
+
         private string Connectstring;
 
         private ILog Log { get; set; }
@@ -47,7 +49,8 @@ namespace RedisStudy.UploadService
 
             RedisHelper publisher = new RedisHelper(Connectstring, 1);
             RedisHelper redisHelper = new RedisHelper(Connectstring, 0);
-            StudentViewModel s = await redisHelper.SortedSetByIndexAsync<StudentViewModel>("STUDENTS", beginIndex);
+            StudentViewModel s = await redisHelper.SortedSetByIndexAsync<StudentViewModel>(CarID.ToString(), beginIndex);
+            
             Log.Info($"取得编号为{s.StudentID}的学员,开始模拟。。。。。。");
             bool r = await Exam(1, publisher, s.StudentID);
             if (!r)
@@ -126,11 +129,12 @@ namespace RedisStudy.UploadService
             };
             EventObject o = new EventObject
             {
+                FromCar = CarID.ToString(),
                 EventModelJson = JsonConvert.SerializeObject(model),
                 Message = "考试开始",
                 Type = EventType.ExamBegin
             };
-            return publisher.PublishAsync<EventObject>("SSS", o);
+            return publisher.PublishAsync<EventObject>(Channel, o);
         }
 
         public Task ExamEnd(int order, long studentid, RedisHelper publisher)
@@ -143,11 +147,12 @@ namespace RedisStudy.UploadService
             };
             EventObject o = new EventObject
             {
+                FromCar = CarID.ToString(),
                 EventModelJson = JsonConvert.SerializeObject(model),
                 Message = "考试结束",
                 Type = EventType.ExamEnd
             };
-            return publisher.PublishAsync<EventObject>("SSS", o);
+            return publisher.PublishAsync<EventObject>(Channel, o);
         }
 
 
@@ -164,11 +169,12 @@ namespace RedisStudy.UploadService
             };
             EventObject o = new EventObject
             {
+                FromCar = CarID.ToString(),
                 EventModelJson = JsonConvert.SerializeObject(model),
                 Message = "项目开始",
                 Type = EventType.ProjectBegin
             };
-            return publisher.PublishAsync<EventObject>("SSS", o);
+            return publisher.PublishAsync<EventObject>(Channel, o);
         }
 
         public Task ProjectEnd(int order, long studentid, ExamProject p, RedisHelper publisher)
@@ -183,11 +189,12 @@ namespace RedisStudy.UploadService
             };
             EventObject o = new EventObject
             {
+                FromCar = CarID.ToString(),
                 EventModelJson = JsonConvert.SerializeObject(model),
                 Message = "项目结束",
                 Type = EventType.projectEnd
             };
-            return publisher.PublishAsync<EventObject>("SSS", o);
+            return publisher.PublishAsync<EventObject>(Channel, o);
         }
 
         public Task LostPoint(int order, long studentid, ExamProject p, LostPointDefine l, RedisHelper publisher)
@@ -207,11 +214,12 @@ namespace RedisStudy.UploadService
             };
             EventObject o = new EventObject
             {
+                FromCar = CarID.ToString(),
                 EventModelJson = JsonConvert.SerializeObject(lost),
                 Message = "扣分",
                 Type = EventType.LostPoint
             };
-            return publisher.PublishAsync<EventObject>("SSS", o);
+            return publisher.PublishAsync<EventObject>(Channel, o);
         }
 
         public Task ExamAllEnd(long studentid, bool passed, RedisHelper publisher)
@@ -223,11 +231,12 @@ namespace RedisStudy.UploadService
             };
             EventObject o = new EventObject
             {
+                FromCar = CarID.ToString(),
                 EventModelJson = JsonConvert.SerializeObject(model),
                 Message = "考试全部结束",
                 Type = EventType.AllEnd
             };
-            return publisher.PublishAsync<EventObject>("SSS", o);
+            return publisher.PublishAsync<EventObject>(Channel, o);
         }
     }
 }

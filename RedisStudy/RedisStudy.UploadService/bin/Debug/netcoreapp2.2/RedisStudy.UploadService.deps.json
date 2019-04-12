@@ -10,8 +10,7 @@
         "dependencies": {
           "CommondTools": "1.0.0",
           "RedisStudy.BusinessLogic": "1.0.0",
-          "RedisStudy.ViewModel": "1.0.0",
-          "socket.core": "1.0.14"
+          "RedisStudy.ViewModel": "1.0.0"
         },
         "runtime": {
           "RedisStudy.UploadService.dll": {}
@@ -735,11 +734,6 @@
           "RedisStudy.ViewModel.dll": {}
         }
       },
-      "socket.core/1.0.14": {
-        "runtime": {
-          "socket.core.dll": {}
-        }
-      },
       "ABSystem.CommService.Reference/1.0.0.0": {
         "runtime": {
           "ABSystem.CommService.dll": {
@@ -1397,11 +1391,6 @@
       "sha512": ""
     },
     "RedisStudy.ViewModel/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "socket.core/1.0.14": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

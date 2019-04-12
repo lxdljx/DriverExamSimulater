@@ -21,7 +21,6 @@
     <ProjectReference Include="..\CommondTools\CommondTools.csproj" />
     <ProjectReference Include="..\RedisStudy.BusinessLogic\RedisStudy.BusinessLogic.csproj" />
     <ProjectReference Include="..\RedisStudy.ViewModel\RedisStudy.ViewModel.csproj" />
-    <ProjectReference Include="..\socket.core\socket.core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

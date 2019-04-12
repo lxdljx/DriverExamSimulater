@@ -7,8 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RedisStudy.Data;
 using RedisStudy.Hub;
 
 namespace RedisStudy.MVC
@@ -32,7 +34,7 @@ namespace RedisStudy.MVC
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddDbContext<ApplicationDbContext>(d => d.UseMySql(Configuration.GetConnectionString("Default")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSignalR();
         }
@@ -55,6 +57,7 @@ namespace RedisStudy.MVC
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

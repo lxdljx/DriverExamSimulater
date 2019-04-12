@@ -14,6 +14,8 @@ namespace RedisStudy.DataController
 {
     class Program
     {
+        private const string SubChannel = "SSS";
+
         static void Main(string[] args)
         {
             Console.WriteLine("订阅的数据操作端启动......");
@@ -24,7 +26,7 @@ namespace RedisStudy.DataController
                                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                                 .Build()["RedisServer:Url"];
             RedisHelper redisHelper = new RedisHelper(connectstr, 1);
-            redisHelper.Subscribe("SSS", async (channel, value) =>
+            redisHelper.Subscribe(SubChannel, async (channel, value) =>
             {
                 
                     //更新数据库
@@ -47,7 +49,7 @@ namespace RedisStudy.DataController
                                         _log.Info($"{DateTime.Now}考生{model.StudentID}第{model.Order}次考试开始成功");
                                         //更新缓存
 
-                                        var rs = await _redis.ExamBegin(model);
+                                        var rs = await _redis.ExamBegin(evo.FromCar, model);
                                         {
                                             
                                             if (rs.Successed)
@@ -79,7 +81,7 @@ namespace RedisStudy.DataController
                                     {
                                         _log.Info($"{DateTime.Now}考生{model.StudentID}第{model.Order}次考试结束成功");
                                         //更新缓存
-                                        var rs = await _redis.ExamEnd(model);
+                                        var rs = await _redis.ExamEnd(evo.FromCar, model);
                                         {
                                             
                                             if (rs.Successed)
@@ -109,7 +111,7 @@ namespace RedisStudy.DataController
                                     {
                                         _log.Info($"{DateTime.Now}考生{model.StudentID}第{model.Order}次考试{model.ProjectName}项目开始成功");
                                         //更新缓存
-                                        var rs = await _redis.ExamProjectBegin(model);
+                                        var rs = await _redis.ExamProjectBegin(evo.FromCar, model);
                                         {
                                             
                                             if (rs.Successed)
@@ -140,7 +142,7 @@ namespace RedisStudy.DataController
                                     {
                                         _log.Info($"{DateTime.Now}考生{model.StudentID}第{model.Order}次考试{model.ProjectName}项目结束成功");
                                         //更新缓存
-                                        var rs = await _redis.ExamProjectEnd(model);
+                                        var rs = await _redis.ExamProjectEnd(evo.FromCar, model);
                                         {
                                             
                                             if (rs.Successed)
@@ -171,7 +173,7 @@ namespace RedisStudy.DataController
                                     {
                                         _log.Info($"{DateTime.Now}考生{model.StudentID}第{model.Order}次考试扣分成功");
                                         //更新缓存
-                                        var rs = await _redis.ExamLostPoint(model);
+                                        var rs = await _redis.ExamLostPoint(evo.FromCar, model);
                                         {
                                             
                                             if (rs.Successed)
@@ -203,7 +205,7 @@ namespace RedisStudy.DataController
                                     {
                                         _log.Info($"{DateTime.Now}考生{model.StudentID}考试完成成功");
                                         //更新缓存
-                                        var rs = await _redis.ExamAllEnd(model);
+                                        var rs = await _redis.ExamAllEnd(evo.FromCar, model);
                                         {
                                             
                                             if (rs.Successed)

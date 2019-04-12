@@ -68,3 +68,6 @@ F:\github\RedisStudy\RedisStudy.MVC\obj\Debug\netcoreapp2.2\RedisStudy.MVC.Views
 F:\github\RedisStudy\RedisStudy.MVC\obj\Debug\netcoreapp2.2\RedisStudy.MVC.csproj.CopyComplete
 F:\github\RedisStudy\RedisStudy.MVC\obj\Debug\netcoreapp2.2\RedisStudy.MVC.dll
 F:\github\RedisStudy\RedisStudy.MVC\obj\Debug\netcoreapp2.2\RedisStudy.MVC.pdb
+F:\github\RedisStudy\RedisStudy.MVC\bin\Debug\netcoreapp2.2\appsettings.json
+F:\github\RedisStudy\RedisStudy.MVC\bin\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.dll
+F:\github\RedisStudy\RedisStudy.MVC\bin\Debug\netcoreapp2.2\RedisStudy.Core.CodeFirst.pdb

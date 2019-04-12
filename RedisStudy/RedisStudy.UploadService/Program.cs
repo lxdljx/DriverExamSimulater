@@ -41,6 +41,7 @@ namespace RedisStudy.UploadService
             //Console.WriteLine("数据发布开始......");
             string projectfile = Directory.GetCurrentDirectory() + "\\projects.xml";
             string lostpointfile = Directory.GetCurrentDirectory() + "\\lostpoint.xml";
+            
             XmlDocument doc = new XmlDocument();
 
             doc.Load(projectfile);
@@ -54,10 +55,13 @@ namespace RedisStudy.UploadService
 
 
             string sinex = Console.ReadLine();
-            int index = int.Parse(sinex);
-            CarSimuler car = new CarSimuler(1, "111", projets, Losts, connectstr, index, log);
-            Task t = car.Go();
-            t.Wait();
+            int index = 1;
+            for (int i = 1; i < 5; i++)
+            {
+                CarSimuler car = new CarSimuler(i, $"第{i}号车", projets, Losts, connectstr, index, log);
+                Task t = car.Go();
+                //t.Wait();
+            }
             Console.Read();
         }
 

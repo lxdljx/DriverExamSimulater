@@ -18,7 +18,7 @@ namespace RedisStudy.BusinessLogic.Redis
     /// </summary>
     public class RedisService : BaseService, IRedisService
     {
-        private const string Key = "STUDENTS";
+        
 
         public RedisService(ILog logger) : base(logger) { }
 
@@ -33,7 +33,7 @@ namespace RedisStudy.BusinessLogic.Redis
         /// </summary>
         /// <param name="model">开始考试视图模型</param>
         /// <returns>持久化结果</returns>
-        public async Task<PersistentResult> ExamBegin(ExamBeginViewModel model)
+        public async Task<PersistentResult> ExamBegin(string Key, ExamBeginViewModel model)
         {
             if (model == null || model.StudentID == 0 || model.Order == 0)
             {
@@ -76,7 +76,7 @@ namespace RedisStudy.BusinessLogic.Redis
         /// </summary>
         /// <param name="model">结束考试的方法</param>
         /// <returns>持久化结果</returns>
-        public async Task<PersistentResult> ExamEnd(ExamEndViewModel model)
+        public async Task<PersistentResult> ExamEnd(string Key, ExamEndViewModel model)
         {
             if (model == null || model.StudentID == 0 || model.Order == 0)
             {
@@ -122,7 +122,7 @@ namespace RedisStudy.BusinessLogic.Redis
         /// </summary>
         /// <param name="model">考试项目开始视图模型</param>
         /// <returns>持久化结果</returns>
-        public async Task<PersistentResult> ExamProjectBegin(ExamProjectBeginViewModel model)
+        public async Task<PersistentResult> ExamProjectBegin(string Key, ExamProjectBeginViewModel model)
         {
             if (model == null || model.StudentID == 0 || model.Order == 0 || model.ProjectID == 0)
             {
@@ -165,7 +165,7 @@ namespace RedisStudy.BusinessLogic.Redis
         /// </summary>
         /// <param name="model">考试项目结束视图模型</param>
         /// <returns>持久化结果</returns>
-        public async Task<PersistentResult> ExamProjectEnd(ExamProjectEndViewModel model)
+        public async Task<PersistentResult> ExamProjectEnd(string Key, ExamProjectEndViewModel model)
         {
             if (model == null || model.StudentID == 0 || model.Order == 0)
             {
@@ -215,7 +215,7 @@ namespace RedisStudy.BusinessLogic.Redis
         /// </summary>
         /// <param name="model">扣分视图模型</param>
         /// <returns>持久化结果对象</returns>
-        public async Task<PersistentResult> ExamLostPoint(ExamLostPointViewModel model)
+        public async Task<PersistentResult> ExamLostPoint(string Key, ExamLostPointViewModel model)
         {
             if (model == null || model.StudentID == 0 || model.Order == 0)
             {
@@ -287,7 +287,7 @@ namespace RedisStudy.BusinessLogic.Redis
         /// </summary>
         /// <param name="model">考试整个结束视图模型</param>
         /// <returns>持久化结果</returns>
-        public async Task<PersistentResult> ExamAllEnd(ExamAllEndViewModel model)
+        public async Task<PersistentResult> ExamAllEnd(string Key, ExamAllEndViewModel model)
         {
             if (model == null || model.StudentID == 0)
             {
@@ -324,7 +324,7 @@ namespace RedisStudy.BusinessLogic.Redis
         /// 查询所有已经分配车的学员的方法
         /// </summary>
         /// <returns>查询结果</returns>
-        public async Task<QueryResults<StudentViewModel>> QueryCaredStudentsByRange(long begin = 0, long end = 0)
+        public async Task<QueryResults<StudentViewModel>> QueryCaredStudentsByRange(string Key, long begin = 0, long end = 0)
         {
             if (end == 0)
             {

@@ -6,6 +6,8 @@ namespace RedisStudy.ViewModel.EventObject
 {
     public class EventObject
     {
+        public string FromCar { get; set; }
+
         public string Message { get; set; }
 
         public EventType Type { get; set; }
